@@ -883,7 +883,7 @@
 
         window.addEventListener('DOMContentLoaded', initReviews);
 
-       // 5. BOOKING FORM
+    // 5. BOOKING FORM
         function handleFormSubmit(event) {
             if (event) {
                 event.preventDefault(); // Ngăn chặn trang web tải lại (reload)
@@ -905,9 +905,7 @@
             }
 
             const bookingForm = document.getElementById('bookingForm');
-            const submitBtn = (event && event.target && event.target.querySelector) 
-                ? event.target.querySelector('button[type="submit"]') 
-                : document.getElementById('submitBtn');
+            const submitBtn = bookingForm ? bookingForm.querySelector('button[type="submit"]') : null;
             const originalText = submitBtn ? submitBtn.innerText : 'Send Booking Request';
             
             if (submitBtn) {
@@ -952,12 +950,13 @@
             });
         }
 
-        // Tự động gán hàm handleFormSubmit khi trang web tải xong (Sửa lỗi "is not defined")
+        // Tự động gán hàm handleFormSubmit khi trang web tải xong
         document.addEventListener('DOMContentLoaded', function () {
             const bookingForm = document.getElementById('bookingForm');
             if (bookingForm) {
                 bookingForm.addEventListener('submit', handleFormSubmit);
             }
         });
+    </script> <!-- ĐÃ THÊM THẺ ĐÓNG SCRIPT BỊ THIẾU -->
 </body>
 </html>
