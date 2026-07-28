@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Thuy Babysitter & Child Care in Ho Chi Minh City</title>
+    <!-- FAVICON LOGO DESIGN (CUTE BABY VECTOR SVG DATA-URI) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230047AB'/><path d='M30 40 Q50 20 70 40 Q80 25 50 15 Q20 25 30 40 Z' fill='%23FFD700'/><circle cx='50' cy='52' r='26' fill='%23FFD1DC'/><circle cx='40' cy='48' r='3.5' fill='%230B1325'/><circle cx='60' cy='48' r='3.5' fill='%230B1325'/><path d='M42 60 Q50 68 58 60' stroke='%23E31C25' stroke-width='3.5' stroke-linecap='round' fill='none'/><circle cx='33' cy='55' r='4' fill='%23FF8A8A' opacity='0.6'/><circle cx='67' cy='55' r='4' fill='%23FF8A8A' opacity='0.6'/></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- RESET & HỆ MÀU GỐC --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        :root {
+            --pure-red: #E31C25;
+            --dark-blue: #0047AB;
+            --vibrant-yellow: #FFD700;
+            --pure-green: #00A859;
+            --text-black: #0B1325;
+            --bg-clean: #FFFFFF;
+        }
+
+        body { background-color: var(--bg-clean); color: var(--text-black); overflow-x: hidden; line-height: 1.6; position: relative; }
+
+        /* --- STICKERS --- */
+        .global-stickers { position: fixed; inset: 0; pointer-events: none; z-index: 5; overflow: hidden; }
+        .sticker { position: absolute; font-size: 2.5rem; animation: floatSticker 6s ease-in-out infinite; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.08)); opacity: 0.4; }
+        .st-1 { top: 15%; left: 2%; color: var(--pure-red); }
+        .st-2 { top: 35%; right: 3%; color: var(--pure-green); animation-delay: 1.5s; }
+        .st-3 { top: 65%; left: 2%; color: var(--vibrant-yellow); animation-delay: 0.7s; }
+        .st-4 { top: 85%; right: 2%; color: var(--dark-blue); animation-delay: 2.2s; }
+
+        @keyframes floatSticker {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotate(10deg) scale(1.05); }
+            100% { transform: translateY(0px) rotate(0deg) scale(1); }
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; padding: 20px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; transition: all 0.3s ease;
+        }
+        header.sticky { padding: 12px 8%; background: rgba(255, 255, 255, 0.98); box-shadow: 0 10px 30px rgba(0,0,0,0.08); backdrop-filter: blur(10px); }
+        
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.25rem; font-weight: 800; color: var(--dark-blue); text-decoration: none; letter-spacing: -0.5px; transition: 0.3s; }
+        .logo-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 4px 8px rgba(0,71,171,0.25)); transition: transform 0.3s ease; }
+        .logo:hover .logo-icon { transform: scale(1.1) rotate(5deg); }
+        .logo-icon svg { width: 100%; height: 100%; }
+        .logo span { color: var(--pure-red); font-weight: 600; font-size: 0.95rem; }
+        
+        nav { display: flex; gap: 20px; align-items: center; }
+        nav a { text-decoration: none; color: var(--text-black); font-weight: 700; font-size: 0.9rem; position: relative; transition: 0.3s; }
+        nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--pure-red); transition: 0.3s; border-radius: 2px; }
+        nav a:hover::after { width: 100%; }
+        nav a:hover { color: var(--pure-red); }
+        
+        .cta-btn {
+            background: var(--dark-blue); color: #fff; padding: 12px 24px;
+            border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.95rem;
+            transition: all 0.3s ease; border: none; cursor: pointer; display: inline-block;
+            box-shadow: 0 4px 15px rgba(0, 71, 171, 0.2); text-align: center;
+        }
+        .cta-btn:hover { background: var(--pure-red); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(227, 28, 37, 0.3); }
+
+        /* --- SECTIONS --- */
+        section { padding: 100px 10% 60px 10%; position: relative; z-index: 10; }
+        
+        .section-header { margin-bottom: 40px; }
+        .section-header-flex { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+        .section-header h2 { font-size: 2.6rem; font-weight: 800; color: var(--dark-blue); line-height: 1.2; }
+        .section-header p { font-size: 1.1rem; color: #555; margin-top: 12px; max-width: 750px; }
+
+        /* --- HERO --- */
+        .hero { min-height: 85vh; display: flex; align-items: center; justify-content: space-between; gap: 40px; padding-top: 140px; }
+        .hero-content { flex: 1.1; }
+        .trust-badge-top { display: inline-flex; align-items: center; gap: 8px; background: #F0F4FF; padding: 8px 16px; border-radius: 30px; color: var(--dark-blue); font-weight: 700; font-size: 0.85rem; margin-bottom: 20px; }
+        .trust-badge-top i { color: var(--vibrant-yellow); }
+        
+        .hero-content h1 { font-size: 3.4rem; font-weight: 800; line-height: 1.15; color: var(--text-black); margin-bottom: 15px; letter-spacing: -1px; }
+        .hero-content h1 span { color: var(--pure-red); }
+        .hero-slogan { font-size: 1.25rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 15px; font-style: italic; }
+        .hero-desc { font-size: 1.1rem; color: #4A4A4A; margin-bottom: 30px; max-width: 550px; }
+        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+
+        .hero-image-container { flex: 0.9; position: relative; display: flex; justify-content: center; }
+        .hero-shapes {
+            width: 100%; max-width: 420px; height: 480px; overflow: hidden;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: var(--vibrant-yellow); position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .hero-shapes img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- ABOUT ME --- */
+        .about { display: flex; align-items: center; gap: 60px; }
+        .about-image { flex: 0.85; position: relative; display: flex; justify-content: center; }
+        .about-shape {
+            width: 100%; max-width: 380px; height: 450px;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            overflow: hidden; background: #FFF; 
+            border: 5px solid var(--pure-green);
+            box-shadow: 0 15px 35px rgba(0,168,89,0.18);
+        }
+        .about-shape img { width: 100%; height: 100%; object-fit: cover; }
+        .about-content { flex: 1.15; }
+        .letter-text { font-size: 1.02rem; color: #333; line-height: 1.8; margin-top: 15px; }
+
+        /* --- WHY CHOOSE ME --- */
+        .why-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 25px; margin-top: 30px; }
+        .why-card {
+            background: #FFFFFF; border-radius: 24px; padding: 30px 25px; border: 2px solid #E2E8F0;
+            position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column; gap: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.02); cursor: pointer;
+        }
+        .why-card-icon {
+            width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center;
+            justify-content: center; font-size: 1.8rem; transition: all 0.4s ease; background: #F1F5F9; color: var(--dark-blue);
+        }
+        .why-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--text-black); transition: color 0.3s ease; }
+        .why-card p { font-size: 0.98rem; color: #555; line-height: 1.6; transition: color 0.3s ease; }
+        .why-card:nth-child(1):hover { border-color: var(--pure-red); background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F5 100%); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(227, 28, 37, 0.15); }
+        .why-card:nth-child(1):hover .why-card-icon { background: var(--pure-red); color: #FFF; transform: scale(1.1) rotate(-5deg); }
+        .why-card:nth-child(2):hover { border-color: var(--dark-blue); background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FF 100%); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 71, 171, 0.15); }
+        .why-card:nth-child(2):hover .why-card-icon { background: var(--dark-blue); color: #FFF; transform: scale(1.1) rotate(5deg); }
+        .why-card:nth-child(3):hover { border-color: #D4AF37; background: linear-gradient(135deg, #FFFFFF 0%, #FEFCE8 100%); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(255, 215, 0, 0.25); }
+        .why-card:nth-child(3):hover .why-card-icon { background: var(--vibrant-yellow); color: var(--text-black); transform: scale(1.1) rotate(-5deg); }
+        .why-card:nth-child(4):hover { border-color: var(--pure-green); background: linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 100%); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 168, 89, 0.15); }
+        .why-card:nth-child(4):hover .why-card-icon { background: var(--pure-green); color: #FFF; transform: scale(1.1) rotate(5deg); }
+        .why-card:nth-child(5):hover { border-color: var(--pure-red); background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F5 100%); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(227, 28, 37, 0.15); }
+        .why-card:nth-child(5):hover .why-card-icon { background: var(--pure-red); color: #FFF; transform: scale(1.1) rotate(-5deg); }
+        .why-card:nth-child(6):hover { border-color: var(--dark-blue); background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FF 100%); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0, 71, 171, 0.15); }
+        .why-card:nth-child(6):hover .why-card-icon { background: var(--dark-blue); color: #FFF; transform: scale(1.1) rotate(5deg); }
+
+        /* --- SERVICES & PRICING --- */
+        .services-pricing-wrapper { background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%); border-radius: 35px; padding: 50px 40px; border: 1px solid #E2E8F0; box-shadow: 0 10px 40px rgba(0, 71, 171, 0.04); }
+        .services-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .service-block { padding: 35px 25px; border-radius: 25px; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.03); background: #FFF; }
+        .sb-red { border: 2px solid rgba(227,28,37,0.15); }
+        .sb-green { border: 2px solid rgba(0,168,89,0.15); }
+        .sb-blue { border: 2px solid rgba(0,71,171,0.15); }
+        .sb-yellow { border: 2px solid rgba(255,215,0,0.25); }
+        .service-block:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .service-block i { font-size: 2.2rem; margin-bottom: 18px; display: block; }
+        .sb-red i { color: var(--pure-red); }
+        .sb-green i { color: var(--pure-green); }
+        .sb-blue i { color: var(--dark-blue); }
+        .sb-yellow i { color: #D4AF37; }
+        .service-block h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; color: var(--text-black); }
+        .service-block p { font-size: 0.95rem; color: #555; line-height: 1.5; }
+        .pricing-section-title { text-align: center; margin-bottom: 25px; font-size: 1.6rem; font-weight: 800; color: var(--dark-blue); }
+        .pricing-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .price-card { border: 2px solid #E2E8F0; border-radius: 25px; padding: 35px 25px; text-align: center; transition: all 0.3s ease; background: #FFF; position: relative; }
+        .price-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,71,171,0.1); border-color: var(--dark-blue); }
+        .price-card.normal-border { border-color: #E2E8F0; background: #FFF; }
+        .price-card h3 { font-size: 1.4rem; color: var(--dark-blue); margin-bottom: 12px; font-weight: 800; }
+        .price-card .amount { font-size: 1.8rem; font-weight: 800; color: var(--pure-red); margin-bottom: 6px; }
+        .price-card .sub { font-size: 0.9rem; color: #666; font-weight: 600; }
+        .price-note { text-align: center; margin-top: 25px; font-weight: 600; color: #555; font-size: 0.95rem; background: #FFF; padding: 15px; border-radius: 15px; border: 1px dashed #CBD5E1; }
+        .pricing-action-link { text-align: center; margin-top: 30px; }
+
+        /* --- GALLERY TỐI GIẢN (BỎ BORDER & CHÚ THÍCH) --- */
+        .gallery-section-wrap { position: relative; padding: 20px 0; overflow: hidden; }
+        .coverflow-container {
+            position: relative; width: 100%; max-width: 1100px; height: 500px;
+            margin: 0 auto; display: flex; align-items: center; justify-content: center; perspective: 1200px;
+        }
+        .coverflow-track { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; }
+        
+        .coverflow-card {
+            position: absolute; width: 320px; height: 420px; border-radius: 20px;
+            overflow: hidden; background: #FFFFFF;
+            border: none; /* Đã xóa border */
+            box-shadow: 0 20px 45px rgba(0, 71, 171, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                        opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                        filter 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                        box-shadow 0.4s ease;
+            user-select: none;
+            padding: 0; /* Đã bỏ padding khung ảnh */
+        }
+
+        .coverflow-card-inner {
+            width: 100%; height: 100%; border-radius: 20px; overflow: hidden; position: relative; background: #F1F5F9;
+        }
+
+        .coverflow-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .coverflow-card.active img { transform: scale(1.08); }
+
+        .g-nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%); width: 55px; height: 55px;
+            border-radius: 50%; background: #FFF; color: var(--dark-blue); border: none; font-size: 1.2rem;
+            cursor: pointer; z-index: 50; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .g-nav-btn:hover { background: var(--dark-blue); color: #FFF; transform: translateY(-50%) scale(1.1); }
+        .g-btn-prev { left: 10px; }
+        .g-btn-next { right: 10px; }
+        .gallery-dots { display: flex; justify-content: center; gap: 10px; margin-top: 30px; }
+        .g-dot { width: 12px; height: 12px; border-radius: 50%; background: #CBD5E1; border: none; cursor: pointer; transition: all 0.3s ease; }
+        .g-dot.active { background: var(--dark-blue); width: 32px; border-radius: 6px; }
+
+        /* --- REVIEWS & MODAL REVIEW --- */
+        .btn-add-review {
+            background: #FFF; color: var(--dark-blue); border: 2px solid var(--dark-blue);
+            padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 0.9rem;
+            cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-add-review:hover { background: var(--dark-blue); color: #FFF; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 71, 171, 0.2); }
+
+        .reviews-slider-container { position: relative; max-width: 850px; margin: 0 auto; overflow: hidden; padding: 10px 0 30px 0; }
+        .reviews-track { display: flex; transition: transform 0.4s ease-in-out; }
+        .review-slide { min-width: 100%; box-sizing: border-box; padding: 10px; display: flex; gap: 30px; align-items: center; }
+        .review-img-box {
+            flex: 0.8; height: 280px; border-radius: 30% 70% 70% 30% / 50% 30% 70% 50%;
+            overflow: hidden; background: var(--vibrant-yellow); position: relative; box-shadow: 0 8px 20px rgba(0,0,0,0.08); flex-shrink: 0;
+        }
+        .review-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .review-content-box { flex: 1.2; }
+        .stars { color: var(--vibrant-yellow); font-size: 1.2rem; margin-bottom: 10px; }
+        .quote-text { font-size: 1.08rem; font-weight: 700; color: var(--dark-blue); line-height: 1.6; margin-bottom: 14px; word-break: break-word; }
+        .read-more-btn { color: var(--pure-red); background: none; border: none; font-weight: 800; font-size: 0.9rem; cursor: pointer; margin-left: 5px; text-decoration: underline; }
+        .author-info { font-size: 1rem; font-weight: 800; color: var(--pure-red); text-transform: uppercase; }
+        .author-sub { font-size: 0.85rem; color: #666; font-weight: 600; display: block; margin-top: 3px; }
+
+        .slider-nav { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 10px; }
+        .slider-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--dark-blue); color: #FFF; border: none; cursor: pointer; font-size: 1rem; transition: 0.3s; }
+        .slider-btn:hover { background: var(--pure-red); }
+
+        /* MODAL POPUP CHO REVIEW MỚI */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(11, 19, 37, 0.6); backdrop-filter: blur(5px);
+            z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s ease; padding: 20px;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-card {
+            background: #FFF; width: 100%; max-width: 520px; border-radius: 28px; padding: 35px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25); transform: translateY(20px); transition: all 0.3s ease; position: relative;
+        }
+        .modal-overlay.active .modal-card { transform: translateY(0); }
+        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.4rem; background: #F1F5F9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; color: #555; transition: 0.2s; }
+        .modal-close:hover { background: var(--pure-red); color: #FFF; }
+        .modal-title { font-size: 1.5rem; font-weight: 800; color: var(--dark-blue); margin-bottom: 20px; }
+
+        /* BOOKING FORM */
+        .form-box { background: #F8FAFC; border-radius: 25px; padding: 35px; margin-top: 30px; border: 1px solid #E2E8F0; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 15px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-weight: 700; color: var(--dark-blue); font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 12px 15px; border-radius: 12px; border: 2px solid #E2E8F0; font-size: 0.95rem; outline: none; transition: 0.3s; background: #FFF;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--dark-blue); box-shadow: 0 0 0 3px rgba(0,71,171,0.1); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--text-black); color: #FFFFFF; padding: 70px 10% 30px 10%; position: relative; z-index: 10; }
+        .footer-wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; margin-bottom: 40px; flex-wrap: wrap; }
+        .footer-logo { font-size: 1.8rem; font-weight: 800; color: #FFF; text-decoration: none; }
+        .footer-logo span { color: var(--vibrant-yellow); }
+        .footer-contact p { font-size: 1rem; margin-bottom: 10px; color: #DDD; }
+        .footer-contact i { color: var(--vibrant-yellow); margin-right: 10px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; display: flex; justify-content: space-between; color: #888; font-size: 0.9rem; flex-wrap: wrap; gap: 15px; }
+
+        /* FLOATING BUTTONS */
+        .floating-buttons { position: fixed; bottom: 25px; right: 25px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
+        .float-btn {
+            width: 50px; height: 50px; border-radius: 50%; color: white; display: flex;
+            align-items: center; justify-content: center; font-size: 1.5rem; text-decoration: none;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2); transition: transform 0.2s ease, background 0.3s;
+        }
+        .float-btn:hover { transform: scale(1.1); }
+        .fb-call { background: var(--pure-red); }
+        .fb-wa { background: #25D366; }
+        .fb-zalo { background: #0068FF; }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            header { padding: 15px 5%; }
+            section { padding: 80px 5% 40px 5%; }
+            .hero { flex-direction: column; text-align: center; padding-top: 110px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-btns { justify-content: center; }
+            .about { flex-direction: column; }
+            .review-slide { flex-direction: column; text-align: center; }
+            .review-img-box { width: 100%; max-width: 240px; margin: 0 auto; }
+            .footer-wrap { flex-direction: column; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            nav { display: none; }
+            .coverflow-container { height: 420px; }
+            .coverflow-card { width: 270px; height: 360px; }
+        }
+        @media (max-width: 600px) {
+            .coverflow-card { width: 230px; height: 320px; }
+            .why-cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="global-stickers">
+        <div class="sticker st-1"><i class="fa-solid fa-star"></i></div>
+        <div class="sticker st-2"><i class="fa-solid fa-heart"></i></div>
+        <div class="sticker st-3"><i class="fa-solid fa-shield-heart"></i></div>
+        <div class="sticker st-4"><i class="fa-solid fa-face-smile"></i></div>
+    </div>
+
+    <header id="main-header">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="48" fill="#0047AB"/>
+                    <path d="M30 40 Q50 20 70 40 Q80 25 50 15 Q20 25 30 40 Z" fill="#FFD700"/>
+                    <circle cx="50" cy="52" r="26" fill="#FFD1DC"/>
+                    <circle cx="40" cy="48" r="3.5" fill="#0B1325"/>
+                    <circle cx="60" cy="48" r="3.5" fill="#0B1325"/>
+                    <path d="M42 60 Q50 68 58 60" stroke="#E31C25" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                    <circle cx="33" cy="55" r="4" fill="#FF8A8A" opacity="0.6"/>
+                    <circle cx="67" cy="55" r="4" fill="#FF8A8A" opacity="0.6"/>
+                </svg>
+            </div>
+            Thanh Thuy <span>Childcare</span>
+        </a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#services">Services & Rates</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="#booking" class="cta-btn">Booking Now</a>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="trust-badge-top">
+                <i class="fa-solid fa-star"></i> 20+ Years of childcare experience
+            </div>
+            <h1><span>Thanh Thuy</span> <div>Trusted Childcare </div> <div>in Ho Chi Minh City </div> </h1>
+            <div class="hero-slogan">"Flexible support for your schedule, heartfelt care and safe engagement for your children."</div>
+            <p class="hero-desc">Providing warm, adaptable part-time babysitting for busy, expat, and traveling families in Ho Chi Minh City.</p>
+            <div class="hero-btns">
+                <a href="#booking" class="cta-btn" style="background-color: var(--pure-red);">Book a Session</a>
+                <a href="#services" class="cta-btn" style="background-color: var(--dark-blue);">View Services & Rates</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <div class="hero-shapes">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt=>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-image">
+            <div class="about-shape">
+                <img src="https://images.unsplash.com/photo-1581579438747-1dc8d1e0ca96?auto=format&fit=crop&w=600&q=80" >
+            </div>
+        </div>
+        <div class="about-content">
+            <h2>Warm Hello to Parents!</h2>
+            <div class="letter-text">
+                <p style="margin-bottom: 12px;">My name is <strong>Thuy</strong>, an independent part-time nanny based in Ho Chi Minh City. First and foremost, thank you for stopping by!.</p>
+                <p style="margin-bottom: 12px;">I deeply understand that modern parenting requires balance, and every family's journey is unique. Whether you are a local parent needing a few quiet hours to focus on work, an expat family settling into Saigon, or travelers hoping to enjoy a peaceful dinner date, finding a trustworthy hand to care for your little ones is essential.</p>
+                <p style="margin-bottom: 12px;" >With <b> over 20 years </b> of dedicated hands-on experience caring for infants, toddlers, and young children from diverse cultural backgrounds, I view babysitting not merely as a task, but as a meaningful connection. My approach centers on gentle patience, clear communication, active listening, and creating a safe, cheerful space where children feel valued and comfortable—even when meeting someone new for the first time.</p>
+	<p>When you welcome me into your child's routine, you can rest assured knowing they are surrounded by warmth, attentive safety, and constructive engagement every single minute.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="section-header">
+            <h2>Why Families Choose My Care</h2>
+           
+        </div>
+        
+        <div class="why-cards-grid">
+            <div class="why-card">
+                <div class="why-card-icon"><i class="fa-solid fa-award"></i></div>
+                <h3>Proven Hands-On Experience</h3>
+                <p>Intuitive child care skills, rapid problem-solving, and a proven track record of creating a reassuring, joyful atmosphere for kids of all ages.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-card-icon"><i class="fa-solid fa-clock"></i></div>
+                <h3>Total Hourly Flexibility</h3>
+                <p>No long-term contracts required. Schedule and pay strictly for the exact hours you need—from a 3-hour dinner date to recurring weekly care.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-card-icon"><i class="fa-solid fa-sliders"></i></div>
+                <h3>Tailored to Your Routine</h3>
+                <p>Adapting smoothly to your child’s existing nap schedules, dietary habits, and household rules to ensure a seamless transition.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-card-icon"><i class="fa-solid fa-comments"></i></div>
+                <h3>Fluent English Communication</h3>
+                <p>Fluent conversational English enables smooth, direct coordination with international parents, expats, and travelers in Ho Chi Minh City.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-card-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                <h3>Safety & Hygiene Mindset</h3>
+                <p>Well-versed in pediatric hygiene standards and active child safety protocols to ensure complete peace of mind for parents.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-card-icon"><i class="fa-solid fa-camera"></i></div>
+                <h3>Live Updates</h3>
+                <p>Accompanied by real-time photo/video updates via WhatsApp or Zalo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-header">
+            <h2>Services & Transparent Rates</h2>
+            <p>Flexible care packages and clear pricing designed around your family's dynamic schedule.</p>
+        </div>
+        
+        <div class="services-pricing-wrapper">
+            <div class="services-container">
+                <div class="service-block sb-red">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                    <h3>Flexible Hourly Care</h3>
+                    <p>Short-term support at your home for remote work focus, personal errands, or appointments.</p>
+                </div>
+                <div class="service-block sb-green">
+                    <i class="fa-solid fa-plane"></i>
+                    <h3>Travel & Hotel Caregiver</h3>
+                    <p>Attentive supervision at hotels, resorts, or accompanying city tours across HCMC.</p>
+                </div>
+                <div class="service-block sb-blue">
+                    <i class="fa-solid fa-moon"></i>
+                    <h3>Evening & Bedtime Care</h3>
+                    <p>Support for dinner dates or evening events, including bath time, reading, and sleep routines.</p>
+                </div>
+                <div class="service-block sb-yellow">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>After-School Companion</h3>
+                    <p>School pick-ups, afternoon snacks, and constructive play or homework guidance.</p>
+                </div>
+            </div>
+
+            <div class="pricing-section-title">Hourly Rates & Packages</div>
+            
+            <div class="pricing-wrap">
+                <div class="price-card normal-border">
+                    <h3>1 to 2 Children</h3>
+                    <div class="amount">200,000 VND <span style="font-size: 0.9rem; color: #555;">/hr</span></div>
+                    <div class="sub">(Approx. $8 USD / hour)</div>
+                </div>
+                <div class="price-card normal-border">
+                    <h3>3+ Children</h3>
+                    <div class="amount">250,000 VND <span style="font-size: 0.9rem; color: #555;">/hr</span></div>
+                    <div class="sub">(Approx. $10 USD / hour)</div>
+                </div>
+                            </div>
+            
+            <div class="price-note">
+                * Minimum booking of 2–3 hours per session is requested to maintain dedicated care quality.
+            </div>
+        </div>
+
+        <div class="pricing-action-link">
+            <a href="#booking" class="cta-btn" style="font-size: 1.05rem; padding: 15px 35px;">Book Your Hourly Care Now <i class="fa-solid fa-arrow-right" style="margin-left: 6px;"></i></a>
+        </div>
+    </section>
+
+    <!-- KHUNG GALLERY TỐI GIẢN (ĐÃ BỎ BORDER VÀ CHÚ THÍCH) -->
+    <section id="gallery">
+        <div class="section-header">
+            <h2>Gallery of Activities</h2>
+            <p>Explore moments from our creative play sessions, book reading, and interactive learning activities. Click any card to bring it to center stage.</p>
+        </div>
+
+        <div class="gallery-section-wrap">
+            <button class="g-nav-btn g-btn-prev" id="gPrevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="g-nav-btn g-btn-next" id="gNextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <div class="coverflow-container" id="coverflowContainer">
+                <div class="coverflow-track" id="coverflowTrack">
+                    <!-- Card 0 -->
+                    <div class="coverflow-card" onclick="goToSlide(0)">
+                        <div class="coverflow-card-inner">
+                            <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=800&q=80" alt="Drawing Session">
+                        </div>
+                    </div>
+                    <!-- Card 1 -->
+                    <div class="coverflow-card" onclick="goToSlide(1)">
+                        <div class="coverflow-card-inner">
+                            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Story Reading">
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="coverflow-card" onclick="goToSlide(2)">
+                        <div class="coverflow-card-inner">
+                            <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80" alt="Arts & Crafts">
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="coverflow-card" onclick="goToSlide(3)">
+                        <div class="coverflow-card-inner">
+                            <img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=800&q=80" alt="Outdoor Park Play">
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="coverflow-card" onclick="goToSlide(4)">
+                        <div class="coverflow-card-inner">
+                            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80" alt="Learning and Fun">
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="coverflow-card" onclick="goToSlide(5)">
+                        <div class="coverflow-card-inner">
+                            <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80" alt="Building Blocks">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-dots" id="galleryDots"></div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+        <div class="section-header section-header-flex">
+            <div>
+                <h2>Parent Feedback</h2>
+                <p>Read experiences shared by international families and local parents who trust my services.</p>
+            </div>
+            <button class="btn-add-review" onclick="openReviewModal()">
+                <i class="fa-solid fa-pen-to-square"></i> Leave a Review
+            </button>
+        </div>
+
+        <div class="reviews-slider-container">
+            <div class="reviews-track" id="reviewsTrack">
+                <!-- Review 1 -->
+                <div class="review-slide">
+                    <div class="review-img-box">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" alt="Reviewer">
+                    </div>
+                    <div class="review-content-box">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <div class="quote-text" data-fulltext="An absolute lifesaver during our family vacation in Saigon! Punctual, extremely caring, and sent frequent photo updates throughout the entire stay. Our daughter loved every minute of playing and crafting together. Highly recommended to all expats and traveling families!"></div>
+                        <div class="author-info">— Emma & James</div>
+                        <span class="author-sub">Australia • Tourists in HCMC</span>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-slide">
+                    <div class="review-img-box">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=500&q=80" alt="Reviewer">
+                    </div>
+                    <div class="review-content-box">
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <div class="quote-text" data-fulltext="Rất chuyên nghiệp và tận tâm. Bé nhà mình rất quấn cô và học hỏi được nhiều hoạt động sáng tạo bổ ích. Cô luôn báo cáo tình hình bé theo thời gian thực nên vợ chồng mình hoàn toàn yên tâm làm việc."></div>
+                        <div class="author-info">— Chị Minh Thư</div>
+                        <span class="author-sub">Thảo Điền, District 2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-btn" id="prevRevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-btn" id="nextRevBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL REVIEW -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeReviewModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-title">Share Your Experience</div>
+            <form id="newReviewForm" onsubmit="handleReviewSubmit(event)">
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label>Your Name *</label>
+                    <input type="text" id="revAuthor" placeholder="e.g., Sarah Jenkins" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label>Location / Description</label>
+                    <input type="text" id="revSub" placeholder="e.g., Expat in District 7">
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label>Rating *</label>
+                    <select id="revStars" style="font-weight: 700; color: #D4AF37;">
+                        <option value="5">⭐⭐⭐⭐⭐ (5/5 Stars)</option>
+                        <option value="4">⭐⭐⭐⭐ (4/5 Stars)</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label>Upload Photo (Optional)</label>
+                    <input type="file" id="revImageInput" accept="image/*">
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label>Your Review *</label>
+                    <textarea id="revComment" rows="4" placeholder="Tell us about your child's experience..." required></textarea>
+                </div>
+                <button type="submit" class="cta-btn" style="width: 100%; background: var(--pure-red);">Publish Review Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- BOOKING -->
+    <section id="booking">
+        <div class="section-header">
+            <h2>Request an Hourly Care Session</h2>
+            <p>Please complete the details below to schedule your care session quickly.</p>
+        </div>
+        <div class="form-box" style="background: #FFF; border: 2px solid var(--dark-blue);">
+            <form id="bookingForm" action="javascript:void(0);"> 
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Parent's Full Name *</label>
+                        <input type="text" id="parentName" placeholder="Input Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone / WhatsApp / Zalo *</label>
+                        <input type="text" id="parentPhone" placeholder="Input Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Children & Ages *</label>
+                        <input type="text" id="childInfo" placeholder="e.g., 1 child (3 years old)" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Location *</label>
+                        <input type="text" id="serviceLoc" placeholder="District or Hotel Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Date *</label>
+                        <input type="date" id="serviceDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Requested Hours *</label>
+                        <input type="text" id="serviceHours" placeholder="e.g., 2:00 PM - 5:00 PM" required>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label>Special Notes / Requests</label>
+                    <textarea id="serviceNotes" rows="3" placeholder="Allergies, routines, or specific needs"></textarea>
+                </div>
+                <button type="submit" class="cta-btn" style="background: var(--pure-red); width: 100%;">Send Booking Request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-wrap">
+            <div>
+                <a href="#" class="footer-logo">Thanh Thuy <span>Babysitter & Childcare</span></a>
+                <p style="margin-top: 10px; color: #BBB; font-size: 1rem; max-width: 400px; font-style: italic;">
+                    "Looking forward to supporting your family and giving your little ones a joyful, safe experience!"
+                </p>
+            </div>
+            <div class="footer-contact">
+                <p><i class="fa-solid fa-phone"></i> Hotline / Zalo / WhatsApp: <strong>0909706148</strong></p>
+                <p><i class="fa-solid fa-envelope"></i> Email: <strong>thanhthuychildcare@gmail.com</strong></p>
+                <p><i class="fa-solid fa-location-dot"></i> Coverage: Districts across Ho Chi Minh City</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Thanh Thuy Childcare. All rights reserved.</p>
+            <p>Designed by Thanh Thuy.</p>
+        </div>
+    </footer>
+
+    <div class="floating-buttons">
+        <a href="tel:0909706148" class="float-btn fb-call" title="Call Directly"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://wa.me/+84909706148" class="float-btn fb-wa" target="_blank" title="Chat WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://zalo.me/0909706148" class="float-btn fb-zalo" target="_blank" title="Chat Zalo"><i class="fa-solid fa-comment-dots"></i></a>
+    </div>
+
+    <script>
+        // 1. STICKY HEADER
+        window.addEventListener("scroll", function() {
+            const header = document.getElementById("main-header");
+            if (window.scrollY > 40) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        });
+
+        // 2. COVERFLOW GALLERY CAROUSEL LOGIC
+        const cards = document.querySelectorAll('.coverflow-card');
+        const prevBtn = document.getElementById('gPrevBtn');
+        const nextBtn = document.getElementById('gNextBtn');
+        const dotsContainer = document.getElementById('galleryDots');
+        let currentIndex = 0;
+
+        cards.forEach((_, idx) => {
+            const dot = document.createElement('button');
+            dot.classList.add('g-dot');
+            if (idx === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(idx));
+            dotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.g-dot');
+
+        function updateCoverflow() {
+            const total = cards.length;
+            cards.forEach((card, i) => {
+                card.classList.remove('active');
+                let offset = (i - currentIndex) % total;
+                if (offset > total / 2) offset -= total;
+                if (offset < -total / 2) offset += total;
+
+                if (offset === 0) {
+                    card.style.transform = `translateX(0px) translateZ(180px) rotateY(0deg) scale(1)`;
+                    card.style.zIndex = 10;
+                    card.style.opacity = 1;
+                    card.style.filter = 'blur(0px)';
+                    card.classList.add('active');
+                } else if (offset === -1) {
+                    card.style.transform = `translateX(-240px) translateZ(40px) rotateY(28deg) scale(0.85)`;
+                    card.style.zIndex = 5;
+                    card.style.opacity = 0.75;
+                    card.style.filter = 'blur(1px)';
+                } else if (offset === 1) {
+                    card.style.transform = `translateX(240px) translateZ(40px) rotateY(-28deg) scale(0.85)`;
+                    card.style.zIndex = 5;
+                    card.style.opacity = 0.75;
+                    card.style.filter = 'blur(1px)';
+                } else if (offset < -1) {
+                    card.style.transform = `translateX(-420px) translateZ(-80px) rotateY(45deg) scale(0.7)`;
+                    card.style.zIndex = 1;
+                    card.style.opacity = 0.25;
+                    card.style.filter = 'blur(3px)';
+                } else {
+                    card.style.transform = `translateX(420px) translateZ(-80px) rotateY(-45deg) scale(0.7)`;
+                    card.style.zIndex = 1;
+                    card.style.opacity = 0.25;
+                    card.style.filter = 'blur(3px)';
+                }
+            });
+
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCoverflow();
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % cards.length;
+            updateCoverflow();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            updateCoverflow();
+        });
+
+        window.addEventListener('DOMContentLoaded', updateCoverflow);
+
+        // 3. REVIEWS LOGIC
+        const revTrack = document.getElementById('reviewsTrack');
+        const prevRevBtn = document.getElementById('prevRevBtn');
+        const nextRevBtn = document.getElementById('nextRevBtn');
+        let revIndex = 0;
+
+        function renderReviewText(container) {
+            const fullText = container.getAttribute('data-fulltext');
+            if(!fullText) return;
+
+            if(fullText.length > 150) {
+                const truncated = fullText.substring(0, 150) + "...";
+                container.innerHTML = `"${truncated} <button class='read-more-btn' onclick='toggleReadMore(this)'>Read More</button>"`;
+            } else {
+                container.innerHTML = `"${fullText}"`;
+            }
+        }
+
+        function toggleReadMore(btn) {
+            const container = btn.parentElement;
+            const fullText = container.getAttribute('data-fulltext');
+            
+            if(btn.innerText === "Read More") {
+                container.innerHTML = `"${fullText} <button class='read-more-btn' onclick='toggleReadMore(this)'>Show Less</button>"`;
+            } else {
+                const truncated = fullText.substring(0, 150) + "...";
+                container.innerHTML = `"${truncated} <button class='read-more-btn' onclick='toggleReadMore(this)'>Read More</button>"`;
+            }
+        }
+
+        function initReviews() {
+            document.querySelectorAll('.quote-text').forEach(el => renderReviewText(el));
+        }
+
+        function updateRevSlider() {
+            const revSlides = document.querySelectorAll('.review-slide');
+            revTrack.style.transform = `translateX(-${revIndex * 100}%)`;
+        }
+
+        nextRevBtn.addEventListener('click', () => {
+            const revSlides = document.querySelectorAll('.review-slide');
+            revIndex = (revIndex + 1) % revSlides.length;
+            updateRevSlider();
+        });
+
+        prevRevBtn.addEventListener('click', () => {
+            const revSlides = document.querySelectorAll('.review-slide');
+            revIndex = (revIndex - 1 + revSlides.length) % revSlides.length;
+            updateRevSlider();
+        });
+
+        // 4. MODAL REVIEW POPUP
+        const fallbackKidImages = [
+            "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=500&q=80",
+            "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=500&q=80",
+            "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=500&q=80",
+            "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=500&q=80"
+        ];
+
+        function openReviewModal() {
+            document.getElementById('reviewModal').classList.add('active');
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.remove('active');
+        }
+
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            const author = document.getElementById('revAuthor').value.trim();
+            const sub = document.getElementById('revSub').value.trim() || 'Parent in HCMC';
+            const starNum = parseInt(document.getElementById('revStars').value);
+            const comment = document.getElementById('revComment').value.trim();
+            const fileInput = document.getElementById('revImageInput');
+
+            let starHtml = '';
+            for(let i=0; i<starNum; i++) {
+                starHtml += '<i class="fa-solid fa-star"></i>';
+            }
+
+            const processReviewAddition = (imgSrc) => {
+                const newSlide = document.createElement('div');
+                newSlide.className = 'review-slide';
+                newSlide.innerHTML = `
+                    <div class="review-img-box">
+                        <img src="${imgSrc}" alt="Reviewer">
+                    </div>
+                    <div class="review-content-box">
+                        <div class="stars">${starHtml}</div>
+                        <div class="quote-text" data-fulltext="${comment}"></div>
+                        <div class="author-info">— ${author}</div>
+                        <span class="author-sub">${sub}</span>
+                    </div>
+                `;
+
+                revTrack.appendChild(newSlide);
+                renderReviewText(newSlide.querySelector('.quote-text'));
+
+                const revSlides = document.querySelectorAll('.review-slide');
+                revIndex = revSlides.length - 1;
+                updateRevSlider();
+
+                closeReviewModal();
+                document.getElementById('newReviewForm').reset();
+                alert('Thank you! Your review has been added successfully.');
+            };
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    processReviewAddition(e.target.result);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                const randomImg = fallbackKidImages[Math.floor(Math.random() * fallbackKidImages.length)];
+                processReviewAddition(randomImg);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initReviews);
+
+       // 5. BOOKING FORM
+        function handleFormSubmit(event) {
+            if (event) {
+                event.preventDefault(); // Ngăn chặn trang web tải lại (reload)
+            }
+
+            // Lấy dữ liệu từ các ô nhập liệu
+            const name = document.getElementById('parentName')?.value.trim() || '';
+            const phone = document.getElementById('parentPhone')?.value.trim() || '';
+            const child = document.getElementById('childInfo')?.value.trim() || '';
+            const loc = document.getElementById('serviceLoc')?.value.trim() || '';
+            const date = document.getElementById('serviceDate')?.value.trim() || '';
+            const hours = document.getElementById('serviceHours')?.value.trim() || '';
+            const notes = document.getElementById('serviceNotes')?.value.trim() || '';
+            
+            // Kiểm tra nếu chưa điền các ô bắt buộc
+            if (!name || !phone || !child || !loc || !date || !hours) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            const bookingForm = document.getElementById('bookingForm');
+            const submitBtn = (event && event.target && event.target.querySelector) 
+                ? event.target.querySelector('button[type="submit"]') 
+                : document.getElementById('submitBtn');
+            const originalText = submitBtn ? submitBtn.innerText : 'Send Booking Request';
+            
+            if (submitBtn) {
+                submitBtn.innerText = "Sending Request...";
+                submitBtn.disabled = true;
+            }
+
+            // Đóng gói dữ liệu sang định dạng URL-encoded chuẩn
+            const dataParams = new URLSearchParams();
+            dataParams.append('parentName', name);
+            dataParams.append('parentPhone', phone);
+            dataParams.append('childInfo', child);
+            dataParams.append('serviceLoc', loc);
+            dataParams.append('serviceDate', date);
+            dataParams.append('serviceHours', hours);
+            dataParams.append('serviceNotes', notes);
+
+            // URL Google Apps Script của bạn
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxBFhT8Df2Nkx6KHuZTOl6zsR2tUkiUikeTsLelKgfSx3TtPXwODeKJzRI8VVEr34q4hQ/exec';
+
+            // Gửi dữ liệu đi
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: dataParams,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                alert(`Thank you, ${name}! Your booking request has been sent successfully. I will contact you via phone/WhatsApp shortly.`);
+                if (bookingForm) {
+                    bookingForm.reset();
+                }
+            })
+            .catch(error => {
+                alert('Something went wrong. Please contact directly via WhatsApp/Zalo.');
+                console.error('Error!', error.message);
+            })
+            .finally(() => {
+                if (submitBtn) {
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
+        // Tự động gán hàm handleFormSubmit khi trang web tải xong (Sửa lỗi "is not defined")
+        document.addEventListener('DOMContentLoaded', function () {
+            const bookingForm = document.getElementById('bookingForm');
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', handleFormSubmit);
+            }
+        });
+</body>
+</html>
