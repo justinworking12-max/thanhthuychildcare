@@ -279,7 +279,10 @@
         .float-btn:hover { transform: scale(1.1); }
         .fb-call { background: var(--pure-red); }
         .fb-wa { background: #25D366; }
-        .fb-facebook { background: #0068FF; }
+        .fb-facebook { background: #0068FF; <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF" style="display: block !important;">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+</a> }
 
         /* RESPONSIVE */
         @media (max-width: 992px) {
@@ -398,7 +401,7 @@
         </div>
         <div class="hero-image-container">
             <div class="hero-shapes">
-                <img src="https://www.facebook.com/photo.php?fbid=3941485972829247&set=pb.100009036492417.-2207520000&type=3" alt=>
+                <img src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/511131198_3941486046162573_6670045609408181149_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mCUFM_10g-8Q7kNvwFACZZ2&_nc_oc=AdoqrCkrCBYAcZssTNPQd0LKLK4E4V4__hlJbV3JaqF7usMRRsWnwFkRBzmfNk2d0EU&_nc_zt=23&_nc_ht=scontent.fsgn5-8.fna&_nc_gid=k9yRvaPSKzrTFdDNkLoTTQ&_nc_ss=7b2a8&oh=00_AQDknTNUO8OsS_o72FEBCz4iGCfabiqyX-lck0hopyst0w&oe=6A6FDBFA" alt=>
             </div>
         </div>
     </section>
@@ -571,86 +574,63 @@
         </div>
     </section>
 
-    <!-- REVIEWS -->
-    <section id="reviews">
-        <div class="section-header section-header-flex">
-            <div>
-                <h2>Parents Feedbacks </h2>
-                <p>Read experiences shared by international families and local parents who trust my services.</p>
-            </div>
-            <button class="btn-add-review" onclick="openReviewModal()">
-                <i class="fa-solid fa-pen-to-square"></i> Leave a Review
-            </button>
-        </div>
-
-        <div class="reviews-slider-container">
-            <div class="reviews-track" id="reviewsTrack">
-                <!-- Review 1 -->
-                <div class="review-slide">
-                    <div class="review-img-box">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" alt="Reviewer">
-                    </div>
-                    <div class="review-content-box">
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <div class="quote-text" data-fulltext="An absolute lifesaver during our family vacation in Saigon! Punctual, extremely caring, and sent frequent photo updates throughout the entire stay. Our daughter loved every minute of playing and crafting together. Highly recommended to all expats and traveling families!"></div>
-                        <div class="author-info">— Emma & James</div>
-                        <span class="author-sub">Australia • Tourists in HCMC</span>
-                    </div>
-                </div>
-                <!-- Review 2 -->
-                <div class="review-slide">
-                    <div class="review-img-box">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=500&q=80" alt="Reviewer">
-                    </div>
-                    <div class="review-content-box">
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <div class="quote-text" data-fulltext="Rất chuyên nghiệp và tận tâm. Bé nhà mình rất quấn cô và học hỏi được nhiều hoạt động sáng tạo bổ ích. Cô luôn báo cáo tình hình bé theo thời gian thực nên vợ chồng mình hoàn toàn yên tâm làm việc."></div>
-                        <div class="author-info">— Chị Minh Thư</div>
-                        <span class="author-sub">Thảo Điền, District 2</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slider-nav">
-                <button class="slider-btn" id="prevRevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="slider-btn" id="nextRevBtn"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODAL REVIEW -->
-    <div class="modal-overlay" id="reviewModal">
-        <div class="modal-card">
-            <button class="modal-close" onclick="closeReviewModal()"><i class="fa-solid fa-xmark"></i></button>
-            <div class="modal-title">Share Your Experience</div>
-            <form id="newReviewForm" onsubmit="handleReviewSubmit(event)">
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label>Your Name *</label>
-                    <input type="text" id="revAuthor" placeholder="e.g., Sarah Jenkins" required>
-                </div>
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label>Location / Description</label>
-                    <input type="text" id="revSub" placeholder="e.g., Expat in District 7">
-                </div>
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label>Rating *</label>
-                    <select id="revStars" style="font-weight: 700; color: #D4AF37;">
-                        <option value="5">⭐⭐⭐⭐⭐ (5/5 Stars)</option>
-                        <option value="4">⭐⭐⭐⭐ (4/5 Stars)</option>
-                    </select>
-                </div>
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label>Upload Photo (Optional)</label>
-                    <input type="file" id="revImageInput" accept="image/*">
-                </div>
-                <div class="form-group" style="margin-bottom: 20px;">
-                    <label>Your Review *</label>
-                    <textarea id="revComment" rows="4" placeholder="Tell us about your child's experience..." required></textarea>
-                </div>
-                <button type="submit" class="cta-btn" style="width: 100%; background: var(--pure-red);">Publish Review Now</button>
-            </form>
+   <!-- REVIEWS SECTION -->
+<section id="reviews">
+    <div class="section-header section-header-flex">
+        <div>
+            <h2>Parents Feedbacks</h2>
+            <p>Read experiences shared by international families and local parents who trust my services.</p>
         </div>
     </div>
 
+    <div class="reviews-slider-container">
+        <!-- Khung này sẽ tự động đổ dữ liệu review từ file reviews.json vào -->
+        <div class="reviews-track" id="reviewsTrack"></div>
+
+        <div class="slider-nav">
+            <button class="slider-btn" id="prevRevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider-btn" id="nextRevBtn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </div>
+</section>
+
+<!-- SCRIPT LẤY DỮ LIỆU TỰ ĐỘNG -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('reviews.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Không thể tải file reviews.json");
+            }
+            return response.json();
+        })
+        .then(data => {
+            const track = document.getElementById('reviewsTrack');
+            
+            // Xóa dữ liệu cũ (nếu có) và render review mới
+            track.innerHTML = data.map(item => `
+                <div class="review-slide">
+                    <div class="review-img-box">
+                        <img src="${item.img}" alt="Reviewer">
+                    </div>
+                    <div class="review-content-box">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="quote-text" data-fulltext="${item.text}">${item.text}</div>
+                        <div class="author-info">${item.author}</div>
+                        <span class="author-sub">${item.sub}</span>
+                    </div>
+                </div>
+            `).join('');
+        })
+        .catch(error => console.error("Lỗi kết nối dữ liệu review:", error));
+});
+</script>
     <!-- BOOKING -->
     <section id="booking">
         <div class="section-header">
