@@ -1,8 +1,4 @@
-
-
-  <script>
-    // 1. Dữ liệu JSON của bạn
-    const data = [
+[
       {
         "img": "letter1.jpg",
         "text": "Along this time, she has been a great cook, always eager to learn and make her job better. Besides this, she has been a trustful and loving nanny for our 2 daughters.",
