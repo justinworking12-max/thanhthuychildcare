@@ -1,27 +1,27 @@
 [
-      {
-        "img": "letter1.jpg",
-        "text": "Along this time, she has been a great cook, always eager to learn and make her job better. Besides this, she has been a trustful and loving nanny for our 2 daughters.",
-        "author": "Claudia Salas",
-      },
-      {
-        "img": "letter2.jpg",
-        "text": "Miss Thuy has worked for my family with 4 children since September 2007[...]She is hardworking, efficient and kind. Her English is very good. She can also read and write in English. Miss Thuy takes pride in her job and is co-active. She is very responsible and trust-worthy.  ",
-        "author": "Barbara Voigt",
-      },
-       {
-        "img": "letter3.jpg",
-        "text": "We are a family of five people, my husband, me, and our three children, two boys of thirteen and ten, and a girl of seven years old. Despite some language difficulties during the first weeks (our children speak only French), Mrs Thuy Nguyen was able to get in touch with everybody in our family and to create a good relationship with each of us, particularly our children.",
-        "author": "Daniel & Anne Rillet Howald",
-      },
-       {
-        "img": "letter4.jpg",
-        "text": "Mrs. Thuy excellently managed virtually all aspects of our household of 2 for the last 10 years.Mrs. Thuy can communicate good in English both in writing & spoken language.",
-        "author": "Joke & Wieger Otter - Van Zuijlen",
-      },
-       {
-        "img": "letter5.jpg",
-        "text": "She was a tremendous assistance with our young son who was 20 months old at the time we departed Vietnam. Her dedication, gentle nature and friendliness made her a much appreciated member of our household.",
-        "author": "Wayne & Yvonne Clark",
-      },
-    ];
+  {
+    "img": "letter1.jpg",
+    "text": "Along this time, she has been a great cook, always eager to learn and make her job better. Besides this, she has been a trustful and loving nanny for our 2 daughters.",
+    "author": "Claudia Salas"
+  },
+  {
+    "img": "letter2.jpg",
+    "text": "Miss Thuy has worked for my family with 4 children since September 2007[...]She is hardworking, efficient and kind. Her English is very good. She can also read and write in English. Miss Thuy takes pride in her job and is co-active. She is very responsible and trust-worthy.",
+    "author": "Barbara Voigt"
+  },
+  {
+    "img": "letter3.jpg",
+    "text": "We are a family of five people, my husband, me, and our three children, two boys of thirteen and ten, and a girl of seven years old. Despite some language difficulties during the first weeks (our children speak only French), Mrs Thuy Nguyen was able to get in touch with everybody in our family and to create a good relationship with each of us, particularly our children.",
+    "author": "Daniel & Anne Rillet Howald"
+  },
+  {
+    "img": "letter4.jpg",
+    "text": "Mrs. Thuy excellently managed virtually all aspects of our household of 2 for the last 10 years.Mrs. Thuy can communicate good in English both in writing & spoken language.",
+    "author": "Joke & Wieger Otter - Van Zuijlen"
+  },
+  {
+    "img": "letter5.jpg",
+    "text": "She was a tremendous assistance with our young son who was 20 months old at the time we departed Vietnam. Her dedication, gentle nature and friendliness made her a much appreciated member of our household.",
+    "author": "Wayne & Yvonne Clark"
+  }
+]
