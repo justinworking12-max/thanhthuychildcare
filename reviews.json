@@ -1,38 +1,4 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <title>Letters & Reviews</title>
-  <style>
-    /* CSS cho Modal phóng to ảnh */
-    .modal {
-      display: none; position: fixed; z-index: 9999;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85); cursor: pointer;
-    }
-    .modal-content {
-      margin: auto; display: block; max-width: 90%; max-height: 85vh;
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      border-radius: 8px;
-    }
-    .modal .close {
-      position: absolute; top: 15px; right: 25px; color: #fff; font-size: 35px;
-    }
-    /* Style con trỏ bàn tay cho ảnh */
-    .review-img { cursor: pointer; transition: transform 0.2s; }
-    .review-img:hover { transform: scale(1.02); }
-  </style>
-</head>
-<body>
 
-  <!-- Khung chứa nội dung từ JSON -->
-  <div id="reviews-container"></div>
-
-  <!-- Khung Modal phóng to ảnh ẩn sẵn -->
-  <div id="image-modal" class="modal" onclick="closeModal()">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modal-img">
-  </div>
 
   <script>
     // 1. Dữ liệu JSON của bạn
@@ -63,26 +29,3 @@
         "author": "Wayne & Yvonne Clark",
       },
     ];
-
-    // 2. Render ra giao diện
-    const container = document.getElementById('reviews-container');
-    container.innerHTML = data.map(item => `
-      <div class="review-card">
-        <img src="${item.img}" alt="Review" class="review-img" onclick="openModal(this.src)">
-        <p>"${item.text}"</p>
-        <h4>${item.author}</h4>
-        <small>${item.sub}</small>
-      </div>
-    `).join('');
-
-    // 3. Hàm mở / đóng phóng to ảnh
-    function openModal(src) {
-      document.getElementById('modal-img').src = src;
-      document.getElementById('image-modal').style.display = 'block';
-    }
-    function closeModal() {
-      document.getElementById('image-modal').style.display = 'none';
-    }
-  </script>
-</body>
-</html>
