@@ -1,14 +1,88 @@
-[
-  {
-    "img": "letter1.jpg",
-    "text": "An absolute lifesaver during our family vacation in Saigon! Punctual, extremely caring, and sent frequent photo updates throughout the entire stay. Our daughter loved every minute of playing and crafting together. Highly recommended to all expats and traveling families!",
-    "author": "— Emma & James",
-    "sub": "Australia • Tourists in HCMC"
-  },
-  {
-    "img": "letter2.jpg",
-    "text": "Rất chuyên nghiệp và tận tâm. Bé nhà mình rất quấn cô và học hỏi được nhiều hoạt động sáng tạo bổ ích. Cô luôn báo cáo tình hình bé theo thời gian thực nên vợ chồng mình hoàn toàn yên tâm làm việc.",
-    "author": "— Chị Minh Thư",
-    "sub": "Thảo Điền, District 2"
-  }
-]
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Letters & Reviews</title>
+  <style>
+    /* CSS cho Modal phóng to ảnh */
+    .modal {
+      display: none; position: fixed; z-index: 9999;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85); cursor: pointer;
+    }
+    .modal-content {
+      margin: auto; display: block; max-width: 90%; max-height: 85vh;
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      border-radius: 8px;
+    }
+    .modal .close {
+      position: absolute; top: 15px; right: 25px; color: #fff; font-size: 35px;
+    }
+    /* Style con trỏ bàn tay cho ảnh */
+    .review-img { cursor: pointer; transition: transform 0.2s; }
+    .review-img:hover { transform: scale(1.02); }
+  </style>
+</head>
+<body>
+
+  <!-- Khung chứa nội dung từ JSON -->
+  <div id="reviews-container"></div>
+
+  <!-- Khung Modal phóng to ảnh ẩn sẵn -->
+  <div id="image-modal" class="modal" onclick="closeModal()">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img">
+  </div>
+
+  <script>
+    // 1. Dữ liệu JSON của bạn
+    const data = [
+      {
+        "img": "letter1.jpg",
+        "text": "Along this time, she has been a great cook, always eager to learn and make her job better. Besides this, she has been a trustful and loving nanny for our 2 daughters.",
+        "author": "Claudia Salas",
+      },
+      {
+        "img": "letter2.jpg",
+        "text": "Miss Thuy has worked for my family with 4 children since September 2007[...]She is hardworking, efficient and kind. Her English is very good. She can also read and write in English. Miss Thuy takes pride in her job and is co-active. She is very responsible and trust-worthy.  ",
+        "author": "Barbara Voigt",
+      },
+       {
+        "img": "letter3.jpg",
+        "text": "We are a family of five people, my husband, me, and our three children, two boys of thirteen and ten, and a girl of seven years old. Despite some language difficulties during the first weeks (our children speak only French), Mrs Thuy Nguyen was able to get in touch with everybody in our family and to create a good relationship with each of us, particularly our children.",
+        "author": "Daniel & Anne Rillet Howald",
+      },
+       {
+        "img": "letter4.jpg",
+        "text": "Mrs. Thuy excellently managed virtually all aspects of our household of 2 for the last 10 years.Mrs. Thuy can communicate good in English both in writing & spoken language.",
+        "author": "Joke & Wieger Otter - Van Zuijlen",
+      },
+       {
+        "img": "letter5.jpg",
+        "text": "She was a tremendous assistance with our young son who was 20 months old at the time we departed Vietnam. Her dedication, gentle nature and friendliness made her a much appreciated member of our household.",
+        "author": "Wayne & Yvonne Clark",
+      },
+    ];
+
+    // 2. Render ra giao diện
+    const container = document.getElementById('reviews-container');
+    container.innerHTML = data.map(item => `
+      <div class="review-card">
+        <img src="${item.img}" alt="Review" class="review-img" onclick="openModal(this.src)">
+        <p>"${item.text}"</p>
+        <h4>${item.author}</h4>
+        <small>${item.sub}</small>
+      </div>
+    `).join('');
+
+    // 3. Hàm mở / đóng phóng to ảnh
+    function openModal(src) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('image-modal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('image-modal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
