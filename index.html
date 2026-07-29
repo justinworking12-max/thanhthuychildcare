@@ -634,6 +634,14 @@ fetch('reviews.json')
         `).join('');
     })
     .catch(error => console.error('Lỗi tải dữ liệu review:', error));
+	function openModal(src) {
+    document.getElementById('modalImg').src = src;
+    document.getElementById('imgZoomModal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('imgZoomModal').style.display = 'none';
+}
 </script>
     <!-- BOOKING -->
     <section id="booking">
