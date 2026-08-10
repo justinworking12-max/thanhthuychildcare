@@ -166,7 +166,7 @@
         .price-note { text-align: center; margin-top: 25px; font-weight: 600; color: #555; font-size: 0.95rem; background: #FFF; padding: 15px; border-radius: 15px; border: 1px dashed #CBD5E1; }
         .pricing-action-link { text-align: center; margin-top: 30px; }
 
-        /* --- GALLERY TỐI GIẢN (BỎ BORDER & CHÚ THÍCH) --- */
+        /* --- GALLERY --- */
         .gallery-section-wrap { position: relative; padding: 20px 0; overflow: hidden; }
         .coverflow-container {
             position: relative; width: 100%; max-width: 1100px; height: 500px;
@@ -176,22 +176,17 @@
         
         .coverflow-card {
             position: absolute; width: 320px; height: 420px; border-radius: 20px;
-            overflow: hidden; background: #FFFFFF;
-            border: none; /* Đã xóa border */
+            overflow: hidden; background: #FFFFFF; border: none;
             box-shadow: 0 20px 45px rgba(0, 71, 171, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
             cursor: pointer;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
                         opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
                         filter 0.6s cubic-bezier(0.25, 1, 0.5, 1),
                         box-shadow 0.4s ease;
-            user-select: none;
-            padding: 0; /* Đã bỏ padding khung ảnh */
+            user-select: none; padding: 0;
         }
 
-        .coverflow-card-inner {
-            width: 100%; height: 100%; border-radius: 20px; overflow: hidden; position: relative; background: #F1F5F9;
-        }
-
+        .coverflow-card-inner { width: 100%; height: 100%; border-radius: 20px; overflow: hidden; position: relative; background: #F1F5F9; }
         .coverflow-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .coverflow-card.active img { transform: scale(1.08); }
 
@@ -279,12 +274,11 @@
         .float-btn:hover { transform: scale(1.1); }
         .fb-call { background: var(--pure-red); }
         .fb-wa { background: #25D366; }
-        .fb-facebook { background: #0068FF; <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF" style="display: block !important;">
-        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-    </svg>
-</a> }
+        .fb-facebook { background: #0068FF; }
 
-        /* RESPONSIVE */
+        .mobile-toggle { display: none; font-size: 1.3rem; color: var(--dark-blue); background: none; border: none; cursor: pointer; z-index: 1001; }
+
+        /* RESPONSIVE TABLET & MOBILE */
         @media (max-width: 992px) {
             header { padding: 15px 5%; }
             section { padding: 80px 5% 40px 5%; }
@@ -299,20 +293,19 @@
             nav { display: none; }
             .coverflow-container { height: 420px; }
             .coverflow-card { width: 270px; height: 360px; }
-        }
-        @media (max-width: 600px) {
-            .coverflow-card { width: 230px; height: 320px; }
-            .why-cards-grid { grid-template-columns: 1fr; }
-        }
-		.mobile-toggle { display: none; font-size: 1.3rem; color: var(--dark-blue); background: none; border: none; cursor: pointer; z-index: 1001; }
-
-        @media (max-width: 992px) {
+            
             .mobile-toggle { display: block; }
             header nav { display: flex; flex-direction: column; position: fixed; top: 0; right: -100%; width: 80%; max-width: 280px; height: 100vh; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); padding: 80px 20px 30px; box-shadow: -5px 0 20px rgba(0,0,0,0.15); transition: right 0.3s ease; gap: 18px; z-index: 999; }
             header nav.nav-active { right: 0; }
             header .cta-btn { display: none; }
         }
 
+        @media (max-width: 600px) {
+            .coverflow-card { width: 230px; height: 320px; }
+            .why-cards-grid { grid-template-columns: 1fr; }
+        }
+
+        /* TỐI ƯU MOBILE SMALL CHUYÊN SÂU (< 576px) */
         @media (max-width: 576px) {
             * { max-width: 100% !important; box-sizing: border-box !important; }
             section { padding: 35px 14px !important; }
@@ -328,7 +321,7 @@
             .hero-desc, .quote-text, .section-header p { font-size: 0.85rem !important; line-height: 1.4 !important; }
             .section-header h2 { font-size: 1.35rem !important; }
             .hero-btns { flex-direction: column !important; width: 100% !important; gap: 8px !important; }
-            .hero-btns .cta-btn, .hero-btns .secondary-btn { width: 100% !important; padding: 9px 14px !important; font-size: 0.88rem !important; text-align: center; }
+            .hero-btns .cta-btn { width: 100% !important; padding: 9px 14px !important; font-size: 0.88rem !important; text-align: center; }
 
             /* Image Containers & Grid Layouts */
             .hero-shapes, .about-shape { max-width: 200px !important; height: 220px !important; margin: 0 auto !important; }
@@ -337,17 +330,44 @@
             .pricing-wrap, .form-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
             .price-amount { font-size: 1.4rem !important; }
 
-            /* Gallery & Reviews */
+            /* Gallery & Coverflow */
             .coverflow-container { height: 250px !important; }
             .coverflow-card { width: 160px !important; height: 220px !important; }
-            .review-img-box { height: 150px !important; border-radius: 14px !important; }
             
-            /* Form & Buttons */
+            /* TỐI ƯU KHU VỰC REVIEWS TRÊN MOBILE: BUTTON NẰM CÙNG HÀNG VỚI ẢNH & CHỮ */
+            .review-slide {
+                flex-direction: column !important;
+                text-align: left !important;
+                gap: 12px !important;
+            }
+            .review-mobile-header {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                width: 100% !important;
+            }
+            .review-img-box {
+                width: 70px !important;
+                height: 70px !important;
+                border-radius: 50% !important;
+                margin: 0 !important;
+                flex-shrink: 0 !important;
+            }
+            .slider-nav {
+                margin-top: 0 !important;
+                gap: 8px !important;
+            }
+            .slider-btn {
+                width: 34px !important;
+                height: 34px !important;
+                font-size: 0.8rem !important;
+            }
+
+            /* Form & Floating Buttons */
             .form-group input, .form-group select, .form-group textarea { padding: 8px 10px !important; font-size: 0.85rem !important; }
             .floating-buttons { bottom: 10px !important; right: 10px !important; gap: 6px !important; }
             .float-btn { width: 38px !important; height: 38px !important; font-size: 1rem !important; }
         }
-    </style>
     </style>
 </head>
 <body>
@@ -375,7 +395,7 @@
             </div>
             Thanh Thuy <span>Childcare</span>
         </a>
-        <nav>
+        <nav id="mainNav">
             <a href="#home">Home</a>
             <a href="#about">About Me</a>
             <a href="#services">Services & Rates</a>
@@ -383,6 +403,7 @@
             <a href="#reviews">Reviews</a>
             <a href="#contact">Contact</a>
         </nav>
+        <button class="mobile-toggle" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
         <a href="#booking" class="cta-btn">Booking Now</a>
     </header>
 
@@ -401,7 +422,7 @@
         </div>
         <div class="hero-image-container">
             <div class="hero-shapes">
-                <img src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/511131198_3941486046162573_6670045609408181149_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mCUFM_10g-8Q7kNvwFACZZ2&_nc_oc=AdoqrCkrCBYAcZssTNPQd0LKLK4E4V4__hlJbV3JaqF7usMRRsWnwFkRBzmfNk2d0EU&_nc_zt=23&_nc_ht=scontent.fsgn5-8.fna&_nc_gid=k9yRvaPSKzrTFdDNkLoTTQ&_nc_ss=7b2a8&oh=00_AQDknTNUO8OsS_o72FEBCz4iGCfabiqyX-lck0hopyst0w&oe=6A6FDBFA" alt=>
+                <img src="tt2.jpg" alt="Thanh Thuy Babysitter">
             </div>
         </div>
     </section>
@@ -409,7 +430,7 @@
     <section id="about" class="about">
         <div class="about-image">
             <div class="about-shape">
-                <img src="https://scontent.fsgn5-11.fna.fbcdn.net/v/t39.30808-6/678706538_4244200299224478_1740771952359628406_n.jpg?stp=dst-jpg_tt6&cstp=mx1397x2048&ctp=s1397x2048&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=03h-syzH6esQ7kNvwH33rFB&_nc_oc=Adp9sb123hNxkmEjrjuDSOhFsfMcN1FEemPtoEOzXGbNGihPLZwg8jf8OTktmsMdZdY&_nc_zt=23&_nc_ht=scontent.fsgn5-11.fna&_nc_gid=cuJi2m5uvsWdZSrD_G-gjQ&_nc_ss=7b2a8&oh=00_AQCWp_BT8KUfmEyIzNIkq9vRSfna6WVfY-yodPMCX-lnCw&oe=6A6FF748" >
+                <img src="tt1.jpg" alt="About Thanh Thuy">
             </div>
         </div>
         <div class="about-content">
@@ -417,8 +438,8 @@
             <div class="letter-text">
                 <p style="margin-bottom: 12px;">My name is <strong>Thuy</strong>, an independent part-time nanny based in Ho Chi Minh City. First and foremost, thank you for stopping by!.</p>
                 <p style="margin-bottom: 12px;">I deeply understand that modern parenting requires balance, and every family's journey is unique. Whether you are a local parent needing a few quiet hours to focus on work, an expat family settling into Saigon, or travelers hoping to enjoy a peaceful dinner date, finding a trustworthy hand to care for your little ones is essential.</p>
-                <p style="margin-bottom: 12px;" >With <b> over 20 years </b> of dedicated hands-on experience caring for infants, toddlers, and young children from diverse cultural backgrounds, I view babysitting not merely as a task, but as a meaningful connection. My approach centers on gentle patience, clear communication, active listening, and creating a safe, cheerful space where children feel valued and comfortable—even when meeting someone new for the first time.</p>
-	<p>When you welcome me into your child's routine, you can rest assured knowing they are surrounded by warmth, attentive safety, and constructive engagement every single minute.</p>
+                <p style="margin-bottom: 12px;">With <b> over 20 years </b> of dedicated hands-on experience caring for infants, toddlers, and young children from diverse cultural backgrounds, I view babysitting not merely as a task, but as a meaningful connection. My approach centers on gentle patience, clear communication, active listening, and creating a safe, cheerful space where children feel valued and comfortable—even when meeting someone new for the first time.</p>
+                <p>When you welcome me into your child's routine, you can rest assured knowing they are surrounded by warmth, attentive safety, and constructive engagement every single minute.</p>
             </div>
         </div>
     </section>
@@ -426,7 +447,6 @@
     <section id="why">
         <div class="section-header">
             <h2>Why Families Choose My Care</h2>
-           
         </div>
         
         <div class="why-cards-grid">
@@ -506,7 +526,7 @@
                     <div class="amount">250,000 VND <span style="font-size: 0.9rem; color: #555;">/hr</span></div>
                     <div class="sub">(Approx. $10 USD / hour)</div>
                 </div>
-                            </div>
+            </div>
             
             <div class="price-note">
                 * Minimum booking of 2–3 hours per session is requested to maintain dedicated care quality.
@@ -518,7 +538,7 @@
         </div>
     </section>
 
-    <!-- KHUNG GALLERY TỐI GIẢN (ĐÃ BỎ BORDER VÀ CHÚ THÍCH) -->
+    <!-- GALLERY SECTION -->
     <section id="gallery">
         <div class="section-header">
             <h2>Gallery of Activities</h2>
@@ -544,17 +564,16 @@
                         </div>
                     </div>
                     <!-- Card 2 -->
-                    <div class="coverflow-card" onclick="goToSlide(2)"style="width: fit-content;">
+                    <div class="coverflow-card" onclick="goToSlide(2)">
                         <div class="coverflow-card-inner">
-                            <img src="3.jpg" alt="Arts & Crafts"style="display: block;">
+                            <img src="3.jpg" alt="Arts & Crafts">
                         </div>
                     </div>
                     <!-- Card 3 -->
-                    <div class="coverflow-card" onclick="goToSlide(3)" >
-    <div class="coverflow-card-inner">
-        <img src="4.jpg" alt="Outdoor Park Play" >
-    </div>
-</div>
+                    <div class="coverflow-card" onclick="goToSlide(3)">
+                        <div class="coverflow-card-inner">
+                            <img src="4.jpg" alt="Outdoor Park Play">
+                        </div>
                     </div>
                     <!-- Card 4 -->
                     <div class="coverflow-card" onclick="goToSlide(4)">
@@ -567,18 +586,23 @@
                         <div class="coverflow-card-inner">
                             <img src="5.jpg" alt="Building Blocks">
                         </div>
-						 <!-- Card 6 -->
-                    <div class="6-card" onclick="goToSlide(6)">
-                        <div class="6-card-inner">
-                            <img src="6.jpg" alt="6">
-							<!-- Card 7 -->
-                    <div class="7-card" onclick="goToSlide(7)">
-                        <div class="7-card-inner">
-                            <img src="7.jpg" alt="7">
-							<!-- Card 8 -->
-                    <div class="8-card" onclick="goToSlide(8)">
-                        <div class="8-card-inner">
-                            <img src="8.jpg" alt="8">
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="coverflow-card" onclick="goToSlide(6)">
+                        <div class="coverflow-card-inner">
+                            <img src="6.jpg" alt="Activity 6">
+                        </div>
+                    </div>
+                    <!-- Card 7 -->
+                    <div class="coverflow-card" onclick="goToSlide(7)">
+                        <div class="coverflow-card-inner">
+                            <img src="7.jpg" alt="Activity 7">
+                        </div>
+                    </div>
+                    <!-- Card 8 -->
+                    <div class="coverflow-card" onclick="goToSlide(8)">
+                        <div class="coverflow-card-inner">
+                            <img src="8.jpg" alt="Activity 8">
                         </div>
                     </div>
                 </div>
@@ -588,107 +612,120 @@
         </div>
     </section>
 
-  <!-- REVIEWS SECTION -->
-<section id="reviews">
-    <div class="section-header section-header-flex">
-        <div>
-            <h2>Parents Feedbacks</h2>
-            <p>Read experiences shared by international families and local parents who trust my services.</p>
-        </div>
-    </div>
-
-    <div class="reviews-slider-container">
-        <!-- Khung chứa tự động load review từ file reviews.json -->
-        <div class="reviews-track" id="reviewsTrack"></div>
-
-        <div class="slider-nav">
-            <button class="slider-btn" id="prevRevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="slider-btn" id="nextRevBtn"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-    </div>
-</section>
-
-<!-- KHUNG MODAL PHÓNG TO ĂNH -->
-<div id="imgZoomModal" class="img-zoom-modal" onclick="closeModal()">
-    <span class="close-btn">&times;</span>
-    <img id="modalImg" src="" alt="Zoomed Review">
-</div>
-
-<!-- CSS DÀNH RIÊNG CHO PHÓNG TO ĂNH -->
-<style>
-    .review-img-box img {
-        cursor: pointer;
-        transition: transform 0.2s ease;
-    }
-    .review-img-box img:hover {
-        transform: scale(1.03);
-    }
-    .img-zoom-modal {
-        display: none;
-        position: fixed;
-        z-index: 99999;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-color: rgba(0, 0, 0, 0.85);
-        cursor: pointer;
-    }
-    .img-zoom-modal img {
-        max-width: 90%;
-        max-height: 85vh;
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 8px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
-    }
-    .img-zoom-modal .close-btn {
-        position: absolute;
-        top: 15px; right: 25px;
-        color: #fff;
-        font-size: 35px;
-        font-weight: bold;
-    }
-</style>
-
-<!-- SCRIPT FETCH DỮ LIỆU & PHÓNG TO -->
-<script>
-fetch('reviews.json')
-    .then(response => {
-        if (!response.ok) throw new Error('Không tìm thấy file reviews.json');
-        return response.json();
-    })
-    .then(data => {
-        const track = document.getElementById('reviewsTrack');
-        track.innerHTML = data.map(item => `
-            <div class="review-slide">
-                <div class="review-img-box">
-                    <img src="${item.img}" alt="${item.author}" onclick="openModal('${item.img}')">
-                </div>
-                <div class="review-content-box">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <div class="quote-text" data-fulltext="${item.text}">${item.text}</div>
-                    <div class="author-info">${item.author}</div>
-                </div>
+    <!-- REVIEWS SECTION -->
+    <section id="reviews">
+        <div class="section-header section-header-flex">
+            <div>
+                <h2>Parents Feedbacks</h2>
+                <p>Read experiences shared by international families and local parents who trust my services.</p>
             </div>
-        `).join('');
-    })
-    .catch(error => console.error('Lỗi tải dữ liệu review:', error));
+        </div>
 
-function openModal(src) {
-    document.getElementById('modalImg').src = src;
-    document.getElementById('imgZoomModal').style.display = 'block';
-}
+        <div class="reviews-slider-container">
+            <div class="reviews-track" id="reviewsTrack"></div>
 
-function closeModal() {
-    document.getElementById('imgZoomModal').style.display = 'none';
-}
-</script>
+            <div class="slider-nav" id="desktopSliderNav">
+                <button class="slider-btn" id="prevRevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-btn" id="nextRevBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- KHUNG MODAL PHÓNG TO ĂNH -->
+    <div id="imgZoomModal" class="img-zoom-modal" onclick="closeModal()">
+        <span class="close-btn">&times;</span>
+        <img id="modalImg" src="" alt="Zoomed Review">
+    </div>
+
+    <style>
+        .review-img-box img {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .review-img-box img:hover {
+            transform: scale(1.03);
+        }
+        .img-zoom-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            cursor: pointer;
+        }
+        .img-zoom-modal img {
+            max-width: 90%;
+            max-height: 85vh;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+        .img-zoom-modal .close-btn {
+            position: absolute;
+            top: 15px; right: 25px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+    fetch('./reviews.json')
+        .then(response => {
+            if (!response.ok) throw new Error('Không tìm thấy file reviews.json');
+            return response.json();
+        })
+        .then(data => {
+            const track = document.getElementById('reviewsTrack');
+            const isMobile = window.innerWidth <= 576;
+
+            track.innerHTML = data.map(item => `
+                <div class="review-slide">
+                    <div class="review-mobile-header">
+                        <div class="review-img-box">
+                            <img src="${item.img}" alt="${item.author}" onclick="openModal('${item.img}')">
+                        </div>
+                    </div>
+                    <div class="review-content-box">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="quote-text" data-fulltext="${item.text}">${item.text}</div>
+                        <div class="author-info">${item.author}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Tự động chuyển nút điều hướng sang bên cạnh ảnh nếu xem trên Mobile
+            if (isMobile) {
+                const nav = document.getElementById('desktopSliderNav');
+                const firstHeader = document.querySelector('.review-mobile-header');
+                if (firstHeader && nav) {
+                    firstHeader.appendChild(nav);
+                }
+            }
+
+            initReviews();
+        })
+        .catch(error => console.error('Lỗi tải dữ liệu review:', error));
+
+    function openModal(src) {
+        document.getElementById('modalImg').src = src;
+        document.getElementById('imgZoomModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('imgZoomModal').style.display = 'none';
+    }
+    </script>
+
     <!-- BOOKING -->
     <section id="booking">
         <div class="section-header">
@@ -742,9 +779,8 @@ function closeModal() {
             </div>
             <div class="footer-contact">
                 <p><i class="fa-solid fa-phone"></i> Hotline / Zalo / WhatsApp: <strong>0909706148</strong></p>
-                <p><i class="fa-solid fa-envelope"></i>  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thanhthuychildcare@gmail.com" target="_blank" rel="noopener noreferrer"style="color: inherit; text-decoration: none;"> Email: thanhthuychildcare@gmail.com  </a></p>
-				 <p><i class="fa-solid fa-f"></i> <a href="https://www.facebook.com/thanh.thuy.347487" target="_blank" rel="noopener noreferrer "style="color: inherit; text-decoration: none;">Facebook: Thanh Thuy
-    </a> </p>
+                <p><i class="fa-solid fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thanhthuychildcare@gmail.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Email: thanhthuychildcare@gmail.com</a></p>
+                <p><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/thanh.thuy.347487" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Facebook: Thanh Thuy</a></p>
                 <p><i class="fa-solid fa-location-dot"></i> Coverage: Districts across Ho Chi Minh City</p>
             </div>
         </div>
@@ -834,15 +870,19 @@ function closeModal() {
             updateCoverflow();
         }
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % cards.length;
-            updateCoverflow();
-        });
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateCoverflow();
+            });
+        }
 
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-            updateCoverflow();
-        });
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                updateCoverflow();
+            });
+        }
 
         window.addEventListener('DOMContentLoaded', updateCoverflow);
 
@@ -881,99 +921,31 @@ function closeModal() {
         }
 
         function updateRevSlider() {
-            const revSlides = document.querySelectorAll('.review-slide');
             revTrack.style.transform = `translateX(-${revIndex * 100}%)`;
         }
 
-        nextRevBtn.addEventListener('click', () => {
-            const revSlides = document.querySelectorAll('.review-slide');
-            revIndex = (revIndex + 1) % revSlides.length;
-            updateRevSlider();
-        });
-
-        prevRevBtn.addEventListener('click', () => {
-            const revSlides = document.querySelectorAll('.review-slide');
-            revIndex = (revIndex - 1 + revSlides.length) % revSlides.length;
-            updateRevSlider();
-        });
-
-        // 4. MODAL REVIEW POPUP
-        const fallbackKidImages = [
-            "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=500&q=80",
-            "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=500&q=80",
-            "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=500&q=80",
-            "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=500&q=80"
-        ];
-
-        function openReviewModal() {
-            document.getElementById('reviewModal').classList.add('active');
-        }
-
-        function closeReviewModal() {
-            document.getElementById('reviewModal').classList.remove('active');
-        }
-
-        function handleReviewSubmit(e) {
-            e.preventDefault();
-            const author = document.getElementById('revAuthor').value.trim();
-            const sub = document.getElementById('revSub').value.trim() || 'Parent in HCMC';
-            const starNum = parseInt(document.getElementById('revStars').value);
-            const comment = document.getElementById('revComment').value.trim();
-            const fileInput = document.getElementById('revImageInput');
-
-            let starHtml = '';
-            for(let i=0; i<starNum; i++) {
-                starHtml += '<i class="fa-solid fa-star"></i>';
-            }
-
-            const processReviewAddition = (imgSrc) => {
-                const newSlide = document.createElement('div');
-                newSlide.className = 'review-slide';
-                newSlide.innerHTML = `
-                    <div class="review-img-box">
-                        <img src="${imgSrc}" alt="Reviewer">
-                    </div>
-                    <div class="review-content-box">
-                        <div class="stars">${starHtml}</div>
-                        <div class="quote-text" data-fulltext="${comment}"></div>
-                        <div class="author-info">— ${author}</div>
-                        <span class="author-sub">${sub}</span>
-                    </div>
-                `;
-
-                revTrack.appendChild(newSlide);
-                renderReviewText(newSlide.querySelector('.quote-text'));
-
+        if (nextRevBtn) {
+            nextRevBtn.addEventListener('click', () => {
                 const revSlides = document.querySelectorAll('.review-slide');
-                revIndex = revSlides.length - 1;
+                revIndex = (revIndex + 1) % revSlides.length;
                 updateRevSlider();
-
-                closeReviewModal();
-                document.getElementById('newReviewForm').reset();
-                alert('Thank you! Your review has been added successfully.');
-            };
-
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    processReviewAddition(e.target.result);
-                };
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                const randomImg = fallbackKidImages[Math.floor(Math.random() * fallbackKidImages.length)];
-                processReviewAddition(randomImg);
-            }
+            });
         }
 
-        window.addEventListener('DOMContentLoaded', initReviews);
+        if (prevRevBtn) {
+            prevRevBtn.addEventListener('click', () => {
+                const revSlides = document.querySelectorAll('.review-slide');
+                revIndex = (revIndex - 1 + revSlides.length) % revSlides.length;
+                updateRevSlider();
+            });
+        }
 
-    // 5. BOOKING FORM
+        // 4. BOOKING FORM
         function handleFormSubmit(event) {
             if (event) {
-                event.preventDefault(); // Ngăn chặn trang web tải lại (reload)
+                event.preventDefault();
             }
 
-            // Lấy dữ liệu từ các ô nhập liệu
             const name = document.getElementById('parentName')?.value.trim() || '';
             const phone = document.getElementById('parentPhone')?.value.trim() || '';
             const child = document.getElementById('childInfo')?.value.trim() || '';
@@ -982,7 +954,6 @@ function closeModal() {
             const hours = document.getElementById('serviceHours')?.value.trim() || '';
             const notes = document.getElementById('serviceNotes')?.value.trim() || '';
             
-            // Kiểm tra nếu chưa điền các ô bắt buộc
             if (!name || !phone || !child || !loc || !date || !hours) {
                 alert('Please fill in all required fields.');
                 return;
@@ -997,7 +968,6 @@ function closeModal() {
                 submitBtn.disabled = true;
             }
 
-            // Đóng gói dữ liệu sang định dạng URL-encoded chuẩn
             const dataParams = new URLSearchParams();
             dataParams.append('parentName', name);
             dataParams.append('parentPhone', phone);
@@ -1007,10 +977,8 @@ function closeModal() {
             dataParams.append('serviceHours', hours);
             dataParams.append('serviceNotes', notes);
 
-            // URL Google Apps Script của bạn
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxBFhT8Df2Nkx6KHuZTOl6zsR2tUkiUikeTsLelKgfSx3TtPXwODeKJzRI8VVEr34q4hQ/exec';
 
-            // Gửi dữ liệu đi
             fetch(scriptURL, { 
                 method: 'POST', 
                 body: dataParams,
@@ -1034,14 +1002,15 @@ function closeModal() {
             });
         }
 
-        // Tự động gán hàm handleFormSubmit khi trang web tải xong
         document.addEventListener('DOMContentLoaded', function () {
             const bookingForm = document.getElementById('bookingForm');
             if (bookingForm) {
                 bookingForm.addEventListener('submit', handleFormSubmit);
             }
         });
-		const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+
+        // 5. MOBILE MENU
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
 
         if (mobileMenuBtn && mainNav) {
@@ -1058,6 +1027,6 @@ function closeModal() {
                 });
             });
         }
-    </script> <!-- ĐÃ THÊM THẺ ĐÓNG SCRIPT BỊ THIẾU -->
+    </script>
 </body>
 </html>
