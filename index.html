@@ -166,7 +166,7 @@
         .price-note { text-align: center; margin-top: 25px; font-weight: 600; color: #555; font-size: 0.95rem; background: #FFF; padding: 15px; border-radius: 15px; border: 1px dashed #CBD5E1; }
         .pricing-action-link { text-align: center; margin-top: 30px; }
 
-        /* --- GALLERY --- */
+        /* --- GALLERY TỐI GIẢN (BỎ BORDER & CHÚ THÍCH) --- */
         .gallery-section-wrap { position: relative; padding: 20px 0; overflow: hidden; }
         .coverflow-container {
             position: relative; width: 100%; max-width: 1100px; height: 500px;
@@ -176,17 +176,22 @@
         
         .coverflow-card {
             position: absolute; width: 320px; height: 420px; border-radius: 20px;
-            overflow: hidden; background: #FFFFFF; border: none;
+            overflow: hidden; background: #FFFFFF;
+            border: none;
             box-shadow: 0 20px 45px rgba(0, 71, 171, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
             cursor: pointer;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
                         opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
                         filter 0.6s cubic-bezier(0.25, 1, 0.5, 1),
                         box-shadow 0.4s ease;
-            user-select: none; padding: 0;
+            user-select: none;
+            padding: 0;
         }
 
-        .coverflow-card-inner { width: 100%; height: 100%; border-radius: 20px; overflow: hidden; position: relative; background: #F1F5F9; }
+        .coverflow-card-inner {
+            width: 100%; height: 100%; border-radius: 20px; overflow: hidden; position: relative; background: #F1F5F9;
+        }
+
         .coverflow-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .coverflow-card.active img { transform: scale(1.08); }
 
@@ -203,7 +208,7 @@
         .g-dot { width: 12px; height: 12px; border-radius: 50%; background: #CBD5E1; border: none; cursor: pointer; transition: all 0.3s ease; }
         .g-dot.active { background: var(--dark-blue); width: 32px; border-radius: 6px; }
 
-        /* --- REVIEWS & MODAL REVIEW --- */
+        /* --- REVIEWS & BỐ CỤC ĐIỀU HƯỚNG --- */
         .btn-add-review {
             background: #FFF; color: var(--dark-blue); border: 2px solid var(--dark-blue);
             padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 0.9rem;
@@ -211,9 +216,39 @@
         }
         .btn-add-review:hover { background: var(--dark-blue); color: #FFF; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 71, 171, 0.2); }
 
-        .reviews-slider-container { position: relative; max-width: 850px; margin: 0 auto; overflow: hidden; padding: 10px 0 30px 0; }
+        /* Bố cục điều hướng 2 bên chuẩn mobile & desktop */
+        .reviews-wrapper-mobile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            max-width: 950px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .reviews-slider-container { flex: 1; overflow: hidden; padding: 10px 0; }
         .reviews-track { display: flex; transition: transform 0.4s ease-in-out; }
         .review-slide { min-width: 100%; box-sizing: border-box; padding: 10px; display: flex; gap: 30px; align-items: center; }
+        
+        .rev-side-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--dark-blue);
+            color: #FFF;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rev-side-btn:hover { background: var(--pure-red); transform: scale(1.08); }
+
         .review-img-box {
             flex: 0.8; height: 280px; border-radius: 30% 70% 70% 30% / 50% 30% 70% 50%;
             overflow: hidden; background: var(--vibrant-yellow); position: relative; box-shadow: 0 8px 20px rgba(0,0,0,0.08); flex-shrink: 0;
@@ -225,10 +260,6 @@
         .read-more-btn { color: var(--pure-red); background: none; border: none; font-weight: 800; font-size: 0.9rem; cursor: pointer; margin-left: 5px; text-decoration: underline; }
         .author-info { font-size: 1rem; font-weight: 800; color: var(--pure-red); text-transform: uppercase; }
         .author-sub { font-size: 0.85rem; color: #666; font-weight: 600; display: block; margin-top: 3px; }
-
-        .slider-nav { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 10px; }
-        .slider-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--dark-blue); color: #FFF; border: none; cursor: pointer; font-size: 1rem; transition: 0.3s; }
-        .slider-btn:hover { background: var(--pure-red); }
 
         /* MODAL POPUP CHO REVIEW MỚI */
         .modal-overlay {
@@ -276,9 +307,9 @@
         .fb-wa { background: #25D366; }
         .fb-facebook { background: #0068FF; }
 
+        /* RESPONSIVE */
         .mobile-toggle { display: none; font-size: 1.3rem; color: var(--dark-blue); background: none; border: none; cursor: pointer; z-index: 1001; }
 
-        /* RESPONSIVE TABLET & MOBILE */
         @media (max-width: 992px) {
             header { padding: 15px 5%; }
             section { padding: 80px 5% 40px 5%; }
@@ -286,8 +317,6 @@
             .hero-content h1 { font-size: 2.5rem; }
             .hero-btns { justify-content: center; }
             .about { flex-direction: column; }
-            .review-slide { flex-direction: column; text-align: center; }
-            .review-img-box { width: 100%; max-width: 240px; margin: 0 auto; }
             .footer-wrap { flex-direction: column; }
             .footer-bottom { flex-direction: column; text-align: center; }
             nav { display: none; }
@@ -305,7 +334,6 @@
             .why-cards-grid { grid-template-columns: 1fr; }
         }
 
-        /* TỐI ƯU MOBILE SMALL CHUYÊN SÂU (< 576px) */
         @media (max-width: 576px) {
             * { max-width: 100% !important; box-sizing: border-box !important; }
             section { padding: 35px 14px !important; }
@@ -321,7 +349,7 @@
             .hero-desc, .quote-text, .section-header p { font-size: 0.85rem !important; line-height: 1.4 !important; }
             .section-header h2 { font-size: 1.35rem !important; }
             .hero-btns { flex-direction: column !important; width: 100% !important; gap: 8px !important; }
-            .hero-btns .cta-btn { width: 100% !important; padding: 9px 14px !important; font-size: 0.88rem !important; text-align: center; }
+            .hero-btns .cta-btn, .hero-btns .secondary-btn { width: 100% !important; padding: 9px 14px !important; font-size: 0.88rem !important; text-align: center; }
 
             /* Image Containers & Grid Layouts */
             .hero-shapes, .about-shape { max-width: 200px !important; height: 220px !important; margin: 0 auto !important; }
@@ -330,40 +358,37 @@
             .pricing-wrap, .form-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
             .price-amount { font-size: 1.4rem !important; }
 
-            /* Gallery & Coverflow */
+            /* Gallery & Reviews Mobile Adjustments */
             .coverflow-container { height: 250px !important; }
             .coverflow-card { width: 160px !important; height: 220px !important; }
+
+            .reviews-wrapper-mobile { gap: 8px !important; }
+            .rev-side-btn { width: 36px !important; height: 36px !important; font-size: 0.85rem !important; }
             
-            /* TỐI ƯU KHU VỰC REVIEWS TRÊN MOBILE: BUTTON NẰM CÙNG HÀNG VỚI ẢNH & CHỮ */
             .review-slide {
                 flex-direction: column !important;
-                text-align: left !important;
+                align-items: center !important;
+                text-align: center !important;
                 gap: 12px !important;
             }
-            .review-mobile-header {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                width: 100% !important;
-            }
+
             .review-img-box {
-                width: 70px !important;
-                height: 70px !important;
-                border-radius: 50% !important;
-                margin: 0 !important;
-                flex-shrink: 0 !important;
-            }
-            .slider-nav {
-                margin-top: 0 !important;
-                gap: 8px !important;
-            }
-            .slider-btn {
-                width: 34px !important;
-                height: 34px !important;
-                font-size: 0.8rem !important;
+                width: 140px !important;
+                height: 140px !important;
+                border-radius: 20px !important;
+                margin: 0 auto !important;
             }
 
-            /* Form & Floating Buttons */
+            .quote-text {
+                font-size: 0.9rem !important;
+                line-height: 1.45 !important;
+            }
+
+            .author-info {
+                font-size: 0.88rem !important;
+            }
+            
+            /* Form & Buttons */
             .form-group input, .form-group select, .form-group textarea { padding: 8px 10px !important; font-size: 0.85rem !important; }
             .floating-buttons { bottom: 10px !important; right: 10px !important; gap: 6px !important; }
             .float-btn { width: 38px !important; height: 38px !important; font-size: 1rem !important; }
@@ -395,6 +420,11 @@
             </div>
             Thanh Thuy <span>Childcare</span>
         </a>
+        
+        <button class="mobile-toggle" id="mobileMenuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
         <nav id="mainNav">
             <a href="#home">Home</a>
             <a href="#about">About Me</a>
@@ -403,7 +433,6 @@
             <a href="#reviews">Reviews</a>
             <a href="#contact">Contact</a>
         </nav>
-        <button class="mobile-toggle" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
         <a href="#booking" class="cta-btn">Booking Now</a>
     </header>
 
@@ -422,7 +451,7 @@
         </div>
         <div class="hero-image-container">
             <div class="hero-shapes">
-                <img src="tt2.jpg" alt="Thanh Thuy Babysitter">
+                <img src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/511131198_3941486046162573_6670045609408181149_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mCUFM_10g-8Q7kNvwFACZZ2&_nc_oc=AdoqrCkrCBYAcZssTNPQd0LKLK4E4V4__hlJbV3JaqF7usMRRsWnwFkRBzmfNk2d0EU&_nc_zt=23&_nc_ht=scontent.fsgn5-8.fna&_nc_gid=k9yRvaPSKzrTFdDNkLoTTQ&_nc_ss=7b2a8&oh=00_AQDknTNUO8OsS_o72FEBCz4iGCfabiqyX-lck0hopyst0w&oe=6A6FDBFA" alt="Thanh Thuy Childcare">
             </div>
         </div>
     </section>
@@ -430,7 +459,7 @@
     <section id="about" class="about">
         <div class="about-image">
             <div class="about-shape">
-                <img src="tt1.jpg" alt="About Thanh Thuy">
+                <img src="https://scontent.fsgn5-11.fna.fbcdn.net/v/t39.30808-6/678706538_4244200299224478_1740771952359628406_n.jpg?stp=dst-jpg_tt6&cstp=mx1397x2048&ctp=s1397x2048&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_ohc=03h-syzH6esQ7kNvwH33rFB&_nc_oc=Adp9sb123hNxkmEjrjuDSOhFsfMcN1FEemPtoEOzXGbNGihPLZwg8jf8OTktmsMdZdY&_nc_zt=23&_nc_ht=scontent.fsgn5-11.fna&_nc_gid=cuJi2m5uvsWdZSrD_G-gjQ&_nc_ss=7b2a8&oh=00_AQCWp_BT8KUfmEyIzNIkq9vRSfna6WVfY-yodPMCX-lnCw&oe=6A6FF748" alt="About Thanh Thuy">
             </div>
         </div>
         <div class="about-content">
@@ -538,7 +567,7 @@
         </div>
     </section>
 
-    <!-- GALLERY SECTION -->
+    <!-- KHUNG GALLERY TỐI GIẢN -->
     <section id="gallery">
         <div class="section-header">
             <h2>Gallery of Activities</h2>
@@ -564,9 +593,9 @@
                         </div>
                     </div>
                     <!-- Card 2 -->
-                    <div class="coverflow-card" onclick="goToSlide(2)">
+                    <div class="coverflow-card" onclick="goToSlide(2)" style="width: fit-content;">
                         <div class="coverflow-card-inner">
-                            <img src="3.jpg" alt="Arts & Crafts">
+                            <img src="3.jpg" alt="Arts & Crafts" style="display: block;">
                         </div>
                     </div>
                     <!-- Card 3 -->
@@ -612,7 +641,7 @@
         </div>
     </section>
 
-    <!-- REVIEWS SECTION -->
+    <!-- REVIEWS SECTION (ĐÃ ĐIỀU CHỈNH BỐ CỤC NÚT BẤM 2 BÊN) -->
     <section id="reviews">
         <div class="section-header section-header-flex">
             <div>
@@ -621,13 +650,15 @@
             </div>
         </div>
 
-        <div class="reviews-slider-container">
-            <div class="reviews-track" id="reviewsTrack"></div>
-
-            <div class="slider-nav" id="desktopSliderNav">
-                <button class="slider-btn" id="prevRevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="slider-btn" id="nextRevBtn"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="reviews-wrapper-mobile">
+            <button class="rev-side-btn" id="prevRevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+            
+            <div class="reviews-slider-container">
+                <!-- Khung chứa tự động load review từ file reviews.json -->
+                <div class="reviews-track" id="reviewsTrack"></div>
             </div>
+
+            <button class="rev-side-btn" id="nextRevBtn"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </section>
 
@@ -637,6 +668,7 @@
         <img id="modalImg" src="" alt="Zoomed Review">
     </div>
 
+    <!-- CSS DÀNH RIÊNG CHO PHÓNG TO ĂNH -->
     <style>
         .review-img-box img {
             cursor: pointer;
@@ -671,60 +703,6 @@
             font-weight: bold;
         }
     </style>
-
-    <script>
-    fetch('./reviews.json')
-        .then(response => {
-            if (!response.ok) throw new Error('Không tìm thấy file reviews.json');
-            return response.json();
-        })
-        .then(data => {
-            const track = document.getElementById('reviewsTrack');
-            const isMobile = window.innerWidth <= 576;
-
-            track.innerHTML = data.map(item => `
-                <div class="review-slide">
-                    <div class="review-mobile-header">
-                        <div class="review-img-box">
-                            <img src="${item.img}" alt="${item.author}" onclick="openModal('${item.img}')">
-                        </div>
-                    </div>
-                    <div class="review-content-box">
-                        <div class="stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <div class="quote-text" data-fulltext="${item.text}">${item.text}</div>
-                        <div class="author-info">${item.author}</div>
-                    </div>
-                </div>
-            `).join('');
-
-            // Tự động chuyển nút điều hướng sang bên cạnh ảnh nếu xem trên Mobile
-            if (isMobile) {
-                const nav = document.getElementById('desktopSliderNav');
-                const firstHeader = document.querySelector('.review-mobile-header');
-                if (firstHeader && nav) {
-                    firstHeader.appendChild(nav);
-                }
-            }
-
-            initReviews();
-        })
-        .catch(error => console.error('Lỗi tải dữ liệu review:', error));
-
-    function openModal(src) {
-        document.getElementById('modalImg').src = src;
-        document.getElementById('imgZoomModal').style.display = 'block';
-    }
-
-    function closeModal() {
-        document.getElementById('imgZoomModal').style.display = 'none';
-    }
-    </script>
 
     <!-- BOOKING -->
     <section id="booking">
@@ -779,8 +757,8 @@
             </div>
             <div class="footer-contact">
                 <p><i class="fa-solid fa-phone"></i> Hotline / Zalo / WhatsApp: <strong>0909706148</strong></p>
-                <p><i class="fa-solid fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thanhthuychildcare@gmail.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Email: thanhthuychildcare@gmail.com</a></p>
-                <p><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/thanh.thuy.347487" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Facebook: Thanh Thuy</a></p>
+                <p><i class="fa-solid fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=thanhthuychildcare@gmail.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;"> Email: thanhthuychildcare@gmail.com </a></p>
+                <p><i class="fa-solid fa-f"></i> <a href="https://www.facebook.com/thanh.thuy.347487" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Facebook: Thanh Thuy </a></p>
                 <p><i class="fa-solid fa-location-dot"></i> Coverage: Districts across Ho Chi Minh City</p>
             </div>
         </div>
@@ -886,7 +864,7 @@
 
         window.addEventListener('DOMContentLoaded', updateCoverflow);
 
-        // 3. REVIEWS LOGIC
+        // 3. REVIEWS LOGIC & FETCH DATA
         const revTrack = document.getElementById('reviewsTrack');
         const prevRevBtn = document.getElementById('prevRevBtn');
         const nextRevBtn = document.getElementById('nextRevBtn');
@@ -921,23 +899,70 @@
         }
 
         function updateRevSlider() {
-            revTrack.style.transform = `translateX(-${revIndex * 100}%)`;
+            const revSlides = document.querySelectorAll('.review-slide');
+            if (revSlides.length > 0) {
+                revTrack.style.transform = `translateX(-${revIndex * 100}%)`;
+            }
         }
 
         if (nextRevBtn) {
             nextRevBtn.addEventListener('click', () => {
                 const revSlides = document.querySelectorAll('.review-slide');
-                revIndex = (revIndex + 1) % revSlides.length;
-                updateRevSlider();
+                if (revSlides.length > 0) {
+                    revIndex = (revIndex + 1) % revSlides.length;
+                    updateRevSlider();
+                }
             });
         }
 
         if (prevRevBtn) {
             prevRevBtn.addEventListener('click', () => {
                 const revSlides = document.querySelectorAll('.review-slide');
-                revIndex = (revIndex - 1 + revSlides.length) % revSlides.length;
-                updateRevSlider();
+                if (revSlides.length > 0) {
+                    revIndex = (revIndex - 1 + revSlides.length) % revSlides.length;
+                    updateRevSlider();
+                }
             });
+        }
+
+        fetch('reviews.json')
+            .then(response => {
+                if (!response.ok) throw new Error('Không tìm thấy file reviews.json');
+                return response.json();
+            })
+            .then(data => {
+                if (revTrack) {
+                    revTrack.innerHTML = data.map(item => `
+                        <div class="review-slide">
+                            <div class="review-img-box">
+                                <img src="${item.img}" alt="${item.author}" onclick="openModal('${item.img}')">
+                            </div>
+                            <div class="review-content-box">
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <div class="quote-text" data-fulltext="${item.text}">${item.text}</div>
+                                <div class="author-info">${item.author}</div>
+                            </div>
+                        </div>
+                    `).join('');
+                    initReviews();
+                    updateRevSlider();
+                }
+            })
+            .catch(error => console.error('Lỗi tải dữ liệu review:', error));
+
+        function openModal(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('imgZoomModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('imgZoomModal').style.display = 'none';
         }
 
         // 4. BOOKING FORM
@@ -1007,26 +1032,26 @@
             if (bookingForm) {
                 bookingForm.addEventListener('submit', handleFormSubmit);
             }
-        });
 
-        // 5. MOBILE MENU
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
+            // 5. MOBILE MENU
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
 
-        if (mobileMenuBtn && mainNav) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mainNav.classList.toggle('nav-active');
-                const icon = mobileMenuBtn.querySelector('i');
-                if (icon) { icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-xmark'); }
-            });
-            mainNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mainNav.classList.remove('nav-active');
+            if (mobileMenuBtn && mainNav) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mainNav.classList.toggle('nav-active');
                     const icon = mobileMenuBtn.querySelector('i');
-                    if (icon) { icon.classList.add('fa-bars'); icon.classList.remove('fa-xmark'); }
+                    if (icon) { icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-xmark'); }
                 });
-            });
-        }
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mainNav.classList.remove('nav-active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (icon) { icon.classList.add('fa-bars'); icon.classList.remove('fa-xmark'); }
+                    });
+                });
+            }
+        });
     </script>
 </body>
 </html>
