@@ -341,7 +341,28 @@
             .logo { font-size: 1rem !important; }
             .logo-icon { width: 30px !important; height: 30px !important; }
             .global-stickers { display: none !important; }
+/* Chỉ áp dụng cho màn hình điện thoại (dưới 768px) */
+@media (max-width: 768px) {
+  /* Khung chứa phần Hero */
+  .hero-container, 
+  .hero {
+    display: flex !important;
+    flex-direction: column !important; /* Xếp theo hàng dọc */
+  }
 
+  /* Đưa thẻ chứa ảnh lên vị trí đầu tiên */
+  .hero-image, 
+  .hero img {
+    order: 1 !important;
+    width: 100%;
+  }
+
+  /* Đưa phần nội dung chữ và nút xuống phía dưới */
+  .hero-content, 
+  .hero-text {
+    order: 2 !important;
+  }
+}
             /* Hero & Text */
             .hero { padding-top: 75px !important; gap: 12px !important; }
             .hero-content h1 { font-size: 1.5rem !important; line-height: 1.25 !important; }
@@ -571,7 +592,7 @@
     <section id="gallery">
         <div class="section-header">
             <h2>Gallery of Activities</h2>
-            <p>Explore moments from our creative play sessions, book reading, and interactive learning activities. Click any card to bring it to center stage.</p>
+            <p> Click any card to bring it to center stage.</p>
         </div>
 
         <div class="gallery-section-wrap">
@@ -602,12 +623,6 @@
                     <div class="coverflow-card" onclick="goToSlide(3)">
                         <div class="coverflow-card-inner">
                             <img src="4.jpg" alt="Outdoor Park Play">
-                        </div>
-                    </div>
-                    <!-- Card 4 -->
-                    <div class="coverflow-card" onclick="goToSlide(4)">
-                        <div class="coverflow-card-inner">
-                            <img src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/495239189_3902128583431653_7474632647123706420_n.jpg?stp=dst-jpg_tt6&cstp=mx960x720&ctp=s960x720&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=rlbENJOZaIUQ7kNvwEcwkSP&_nc_oc=AdokEXyYMhtwTC0WhSCdaEO-6G48bRoRRQc9B8OLiR3VU5x3YBR9IyKQ_eTchBSJavc&_nc_zt=23&_nc_ht=scontent.fsgn5-8.fna&_nc_gid=ebmUOtvwQyjF-Ss9Rejy6w&_nc_ss=7b2a8&oh=00_AQALYs76msWHeGvq6c1Aoyx2_Lg-hj3II3L5o0bUayvQzQ&oe=6A70189F" alt="Learning and Fun">
                         </div>
                     </div>
                     <!-- Card 5 -->
