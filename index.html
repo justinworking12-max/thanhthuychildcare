@@ -415,47 +415,46 @@
             .float-btn { width: 38px !important; height: 38px !important; font-size: 1rem !important; }
         }
     </style>
-    <!-- COOKIE BANNER STYLES (MATCHING WEBSITE THEME) -->
+    <!-- COOKIE BANNER STYLES (FULL WIDTH FOOTER STYLE) -->
     <style>
         .cookie-banner {
             position: fixed;
-            bottom: 25px;
-            left: 25px;
-            right: 25px;
-            max-width: 480px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             background: #FFFFFF;
-            border: 2px solid var(--dark-blue);
+            border-top: 2px solid var(--dark-blue);
             color: var(--text-black);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 71, 171, 0.15);
-            display: none; /* Mặc định ẩn, JS sẽ bật lên nếu chưa chọn */
-            flex-direction: column;
-            gap: 15px;
+            padding: 18px 8%;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.12);
+            display: none; /* JS sẽ bật lên mỗi lần load trang */
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
             z-index: 10000;
-            animation: slideUpCookie 0.4s ease-out;
+            animation: slideUpCookie 0.3s ease-out;
         }
 
         @keyframes slideUpCookie {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
         }
 
         .cookie-content {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 12px;
+            flex: 1;
         }
 
         .cookie-content i {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--vibrant-yellow);
             flex-shrink: 0;
-            margin-top: 2px;
         }
 
         .cookie-content p {
-            font-size: 0.88rem;
+            font-size: 0.92rem;
             color: #4A4A4A;
             line-height: 1.5;
             margin: 0;
@@ -463,18 +462,19 @@
 
         .cookie-buttons {
             display: flex;
-            gap: 10px;
-            justify-content: flex-end;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
         .cookie-btn {
-            padding: 9px 18px;
+            padding: 10px 22px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             cursor: pointer;
             border: none;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .cookie-btn-accept {
@@ -498,20 +498,23 @@
             color: var(--text-black);
         }
 
-        /* Tối ưu cho Mobile */
-        @media (max-width: 576px) {
+        /* Tối ưu riêng cho Mobile */
+        @media (max-width: 768px) {
             .cookie-banner {
-                left: 14px !important;
-                right: 14px !important;
-                bottom: 14px !important;
-                padding: 15px !important;
+                padding: 15px 5% !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 12px !important;
+            }
+            .cookie-content {
+                align-items: flex-start !important;
             }
             .cookie-buttons {
-                flex-direction: column !important;
+                width: 100% !important;
                 gap: 8px !important;
             }
             .cookie-btn {
-                width: 100% !important;
+                flex: 1 !important;
                 text-align: center;
             }
         }
@@ -1160,43 +1163,28 @@
             }
         });
     </script>
-    <!-- COOKIE BANNER HTML STRUCTURE & LOGIC -->
+   <!-- COOKIE BANNER STRUCTURE & LOGIC -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
             <i class="fa-solid fa-cookie-bite"></i>
-            <p>We use cookies to enhance your experience and analyze site traffic. By clicking "Accept", you agree to our use of cookies.</p>
+            <p>We use cookies to enhance your experience and analyze site traffic. By continuing to visit this site, you agree to our use of cookies.</p>
         </div>
         <div class="cookie-buttons">
-            <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()">Decline</button>
-            <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept</button>
+            <button class="cookie-btn cookie-btn-decline" onclick="closeCookieBanner()">Decline</button>
+            <button class="cookie-btn cookie-btn-accept" onclick="closeCookieBanner()">Accept</button>
         </div>
     </div>
 
     <script>
+        // Luôn hiển thị banner mỗi lần truy cập/tải lại trang
         document.addEventListener("DOMContentLoaded", function () {
-            // Kiểm tra lựa chọn cũ từ localStorage
-            const cookieConsent = localStorage.getItem("cookieConsent");
-            
-            if (!cookieConsent) {
-                // Hiển thị banner nếu chưa lưu lựa chọn
-                const banner = document.getElementById("cookie-banner");
-                if (banner) {
-                    banner.style.display = "flex";
-                }
+            const banner = document.getElementById("cookie-banner");
+            if (banner) {
+                banner.style.display = "flex";
             }
         });
 
-        function acceptCookies() {
-            localStorage.setItem("cookieConsent", "accepted");
-            closeCookieBanner();
-            // Bạn có thể kích hoạt Google Analytics hoặc Pixel ở đây nếu có
-        }
-
-        function declineCookies() {
-            localStorage.setItem("cookieConsent", "declined");
-            closeCookieBanner();
-        }
-
+        // Đóng banner khi bấm nút
         function closeCookieBanner() {
             const banner = document.getElementById("cookie-banner");
             if (banner) {
