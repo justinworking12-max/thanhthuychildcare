@@ -415,110 +415,6 @@
             .float-btn { width: 38px !important; height: 38px !important; font-size: 1rem !important; }
         }
     </style>
-    <!-- COOKIE BANNER STYLES (FULL WIDTH FOOTER STYLE) -->
-    <style>
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #FFFFFF;
-            border-top: 2px solid var(--dark-blue);
-            color: var(--text-black);
-            padding: 18px 8%;
-            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.12);
-            display: none; /* JS sẽ bật lên mỗi lần load trang */
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            z-index: 10000;
-            animation: slideUpCookie 0.3s ease-out;
-        }
-
-        @keyframes slideUpCookie {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        .cookie-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-        }
-
-        .cookie-content i {
-            font-size: 1.6rem;
-            color: var(--vibrant-yellow);
-            flex-shrink: 0;
-        }
-
-        .cookie-content p {
-            font-size: 0.92rem;
-            color: #4A4A4A;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        .cookie-buttons {
-            display: flex;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .cookie-btn {
-            padding: 10px 22px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.88rem;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .cookie-btn-accept {
-            background-color: var(--pure-red);
-            color: #FFFFFF;
-            box-shadow: 0 4px 12px rgba(227, 28, 37, 0.2);
-        }
-
-        .cookie-btn-accept:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(227, 28, 37, 0.35);
-        }
-
-        .cookie-btn-decline {
-            background-color: #F1F5F9;
-            color: #555;
-        }
-
-        .cookie-btn-decline:hover {
-            background-color: #E2E8F0;
-            color: var(--text-black);
-        }
-
-        /* Tối ưu riêng cho Mobile */
-        @media (max-width: 768px) {
-            .cookie-banner {
-                padding: 15px 5% !important;
-                flex-direction: column !important;
-                align-items: stretch !important;
-                gap: 12px !important;
-            }
-            .cookie-content {
-                align-items: flex-start !important;
-            }
-            .cookie-buttons {
-                width: 100% !important;
-                gap: 8px !important;
-            }
-            .cookie-btn {
-                flex: 1 !important;
-                text-align: center;
-            }
-        }
-    </style>
 </head>
 <body>
 
@@ -852,6 +748,11 @@
                     <label>Special Notes / Requests</label>
                     <textarea id="serviceNotes" rows="3" placeholder="Allergies, routines, or specific needs"></textarea>
                 </div>
+
+                <p style="font-size: 0.82rem; color: #666; line-height: 1.5; margin: -6px 0 16px 0;">
+                    Your information is used only to respond to this childcare request. Please avoid sharing unnecessary sensitive information.
+                    <a href="privacy.html" style="color: var(--dark-blue); font-weight: 700;">Read the Privacy Notice</a>.
+                </p>
                 <button type="submit" class="cta-btn" style="background: var(--pure-red); width: 100%;">Send Booking Request</button>
             </form>
         </div>
@@ -874,7 +775,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Thanh Thuy Childcare. All rights reserved.</p>
-            <p>Designed by Thanh Thuy.</p>
+            <p>Designed by Thanh Thuy. · <a href="privacy.html" style="color: inherit;">Privacy Notice</a></p>
         </div>
     </footer>
 
@@ -1120,7 +1021,7 @@
                 mode: 'no-cors'
             })
             .then(() => {
-                alert(`Thank you, ${name}! Your booking request has been sent successfully. I will contact you via phone/WhatsApp shortly.`);
+                alert(`Thank you, ${name}! Your booking request has been submitted. I will contact you via phone/WhatsApp shortly. If you do not hear back, please contact me directly via WhatsApp/Zalo.`);
                 if (bookingForm) {
                     bookingForm.reset();
                 }
@@ -1162,35 +1063,6 @@
                 });
             }
         });
-    </script>
-   <!-- COOKIE BANNER STRUCTURE & LOGIC -->
-    <div id="cookie-banner" class="cookie-banner">
-        <div class="cookie-content">
-            <i class="fa-solid fa-cookie-bite"></i>
-            <p>We use cookies to enhance your experience and analyze site traffic. By continuing to visit this site, you agree to our use of cookies.</p>
-        </div>
-        <div class="cookie-buttons">
-            <button class="cookie-btn cookie-btn-decline" onclick="closeCookieBanner()">Decline</button>
-            <button class="cookie-btn cookie-btn-accept" onclick="closeCookieBanner()">Accept</button>
-        </div>
-    </div>
-
-    <script>
-        // Luôn hiển thị banner mỗi lần truy cập/tải lại trang
-        document.addEventListener("DOMContentLoaded", function () {
-            const banner = document.getElementById("cookie-banner");
-            if (banner) {
-                banner.style.display = "flex";
-            }
-        });
-
-        // Đóng banner khi bấm nút
-        function closeCookieBanner() {
-            const banner = document.getElementById("cookie-banner");
-            if (banner) {
-                banner.style.display = "none";
-            }
-        }
     </script>
 </body>
 </html>
