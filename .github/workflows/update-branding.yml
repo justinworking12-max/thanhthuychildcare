@@ -1,0 +1,55 @@
+name: Update branding assets
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-branding.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-branding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update homepage branding references
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          text = re.sub(
+              r'<!-- FAVICON LOGO DESIGN \(CUTE BABY VECTOR SVG DATA-URI\) -->\s*<link rel="icon"[^>]+>',
+              '<!-- BRAND FAVICON -->\n    <link rel="icon" type="image/svg+xml" href="/favicon.svg">',
+              text,
+              count=1,
+              flags=re.S,
+          )
+
+          old_css = '.logo-icon svg { width: 100%; height: 100%; }'
+          new_css = '.logo-icon img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 50%; }'
+          if old_css in text:
+              text = text.replace(old_css, new_css, 1)
+
+          pattern = re.compile(r'<div class="logo-icon">\s*<svg[\s\S]*?</svg>\s*</div>', re.M)
+          replacement = '<div class="logo-icon">\n                <img src="/brand-logo.svg" alt="Thanh Thuy Childcare logo">\n            </div>'
+          text, n = pattern.subn(replacement, text, count=1)
+          if n != 1:
+              raise SystemExit('Header logo block not found exactly once')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit homepage branding update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Use new Thanh Thuy Childcare logo and favicon"
+          git push
