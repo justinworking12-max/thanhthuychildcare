@@ -1,0 +1,33 @@
+name: Fix favicon markup
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-favicon-line.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-favicon:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clean favicon markup
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html')
+          t=p.read_text(encoding='utf-8')
+          t=re.sub(r'<link rel="icon" type="image/svg\+xml" href="/favicon\.svg">[^\n]*', '<link rel="icon" type="image/svg+xml" href="/favicon.svg">', t, count=1)
+          p.write_text(t, encoding='utf-8')
+          PY
+      - name: Commit cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Fix favicon markup"
+          git push
