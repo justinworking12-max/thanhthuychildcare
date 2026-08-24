@@ -13,8 +13,8 @@
     <meta property="og:url" content="https://www.thuycare.io.vn/">
     <meta property="og:image" content="https://www.thuycare.io.vn/tt1.jpg">
     <meta property="og:image:alt" content="Thanh Thuy, an experienced babysitter in Ho Chi Minh City">
-    <!-- FAVICON LOGO DESIGN (CUTE BABY VECTOR SVG DATA-URI) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230047AB'/><path d='M30 40 Q50 20 70 40 Q80 25 50 15 Q20 25 30 40 Z' fill='%23FFD700'/><circle cx='50' cy='52' r='26' fill='%23FFD1DC'/><circle cx='40' cy='48' r='3.5' fill='%230B1325'/><circle cx='60' cy='48' r='3.5' fill='%230B1325'/><path d='M42 60 Q50 68 58 60' stroke='%23E31C25' stroke-width='3.5' stroke-linecap='round' fill='none'/><circle cx='33' cy='55' r='4' fill='%23FF8A8A' opacity='0.6'/><circle cx='67' cy='55' r='4' fill='%23FF8A8A' opacity='0.6'/></svg>">
+    <!-- BRAND FAVICON -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"><circle cx='50' cy='50' r='48' fill='%230047AB'/><path d='M30 40 Q50 20 70 40 Q80 25 50 15 Q20 25 30 40 Z' fill='%23FFD700'/><circle cx='50' cy='52' r='26' fill='%23FFD1DC'/><circle cx='40' cy='48' r='3.5' fill='%230B1325'/><circle cx='60' cy='48' r='3.5' fill='%230B1325'/><path d='M42 60 Q50 68 58 60' stroke='%23E31C25' stroke-width='3.5' stroke-linecap='round' fill='none'/><circle cx='33' cy='55' r='4' fill='%23FF8A8A' opacity='0.6'/><circle cx='67' cy='55' r='4' fill='%23FF8A8A' opacity='0.6'/></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +62,7 @@
         .logo { display: flex; align-items: center; gap: 12px; font-size: 1.25rem; font-weight: 800; color: var(--dark-blue); text-decoration: none; letter-spacing: -0.5px; transition: 0.3s; }
         .logo-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 4px 8px rgba(0,71,171,0.25)); transition: transform 0.3s ease; }
         .logo:hover .logo-icon { transform: scale(1.1) rotate(5deg); }
-        .logo-icon svg { width: 100%; height: 100%; }
+        .logo-icon img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 50%; }
         .logo span { color: var(--pure-red); font-weight: 600; font-size: 0.95rem; }
         
         nav { display: flex; gap: 20px; align-items: center; }
@@ -437,16 +437,7 @@
     <header id="main-header">
         <a href="#" class="logo">
             <div class="logo-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="48" fill="#0047AB"/>
-                    <path d="M30 40 Q50 20 70 40 Q80 25 50 15 Q20 25 30 40 Z" fill="#FFD700"/>
-                    <circle cx="50" cy="52" r="26" fill="#FFD1DC"/>
-                    <circle cx="40" cy="48" r="3.5" fill="#0B1325"/>
-                    <circle cx="60" cy="48" r="3.5" fill="#0B1325"/>
-                    <path d="M42 60 Q50 68 58 60" stroke="#E31C25" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-                    <circle cx="33" cy="55" r="4" fill="#FF8A8A" opacity="0.6"/>
-                    <circle cx="67" cy="55" r="4" fill="#FF8A8A" opacity="0.6"/>
-                </svg>
+                <img src="/brand-logo.svg" alt="Thanh Thuy Childcare logo">
             </div>
             Thanh Thuy <span>Childcare</span>
         </a>
