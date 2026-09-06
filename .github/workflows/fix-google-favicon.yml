@@ -1,0 +1,44 @@
+name: Fix Google favicon
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-google-favicon.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create real PNG favicon and update homepage
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64, re
+
+          js = Path('api/favicon.js').read_text()
+          m = re.search(r"PNG_BASE64\s*=\s*'([^']+)'", js)
+          if not m:
+              raise SystemExit('PNG_BASE64 not found in api/favicon.js')
+          Path('favicon.png').write_bytes(base64.b64decode(m.group(1)))
+
+          p = Path('index.html')
+          s = p.read_text()
+          old = '<link rel="icon" type="image/svg+xml" href="/favicon.svg">'
+          new = '<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">\n    <link rel="shortcut icon" type="image/png" href="/favicon.png">'
+          if old not in s:
+              raise SystemExit('Expected old favicon tag not found in index.html')
+          p.write_text(s.replace(old, new, 1))
+          PY
+
+      - name: Commit favicon fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add favicon.png index.html
+          git commit -m "Use PNG favicon for Google Search"
+          git push
