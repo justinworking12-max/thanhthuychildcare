@@ -109,3 +109,5 @@ jobs:
           git add index.html
           git commit -m "Add Organization and Service structured data"
           git push
+
+# trigger: 2026-09-06
